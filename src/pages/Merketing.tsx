@@ -30,3 +30,5 @@ const Merketing: React.FC = () => {
 };
 
 export default Merketing;
+
+export default Merketing;
