@@ -13,7 +13,7 @@ const ChatWithUsButton: React.FC = () => {
           <div className="absolute w-[30px] h-[30px] rounded-full bg-blue-500 opacity-80 animate-ping delay-500" />
 
           {/* Button */}
-          <button className="relative z-10 flex items-center gap-2 px-5 py-3 rounded-full bg-[#02ec97] text-[#191818] text-[16px] font-semibold shadow-lg transform animate-zoom hover:scale-105 transition duration-300">
+          <button className="relative z-10 flex items-center gap-2 px-5 py-3 rounded-full bg-[#02ec97] text-[#191818] text-[16px] font-semibold shadow-lg transform animate-zoom hover:scale-105 transition duration-300 cursor-pointer">
             <span className="text-[20px]">💬</span>
           </button>
         </div>
