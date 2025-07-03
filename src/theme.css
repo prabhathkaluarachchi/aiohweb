@@ -1,12 +1,16 @@
-:root {
-  --color-primary: #02ec97;
-  --color-secondary: #181415;
-  --color-ternary: #4B4B4B;
-  --color-bg: #F5F5F5;
-  --color-text: #191818;
-}
+@theme{
+    --color-primary: #02ec97;
+    --color-secondary: #191818;
+    --color-ternary: #4B4B4B;
+    --color-background: #F5F5F5;
+    --color-text: #191818;
 
-body {
+    /* --text-header: 96px;
+    --text-subheader: 32px;
+    --text-para: 24px;
+    --text-navlink: 18px; */
+}
+/* body {
   font-family: 'Roboto';
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -22,5 +26,5 @@ body {
 
 .text-primary {
   color: var(--color-primary);
-}
+} */
 
