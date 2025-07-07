@@ -1,12 +1,15 @@
 import React from "react";
+
 import Image1 from "../../assets/contact/image1.png";
 import Image2 from "../../assets/contact/image2.png";
 import Image3 from "../../assets/contact/image3.png";
 import Mesh from "../../assets/contact/mesh.png";
+import WhatsappIcon from "../../assets/contact/whatsapp.svg";
+import TelephoneIcon from "../../assets/contact/telephone.svg";
+
 import MotionSection from "../common/MotionSection";
 import { AiOutlineMail } from "react-icons/ai";
-import { IoIosCall } from "react-icons/io";
-import { FaWhatsapp } from "react-icons/fa";
+import { IoMailOutline } from "react-icons/io5";
 
 const ContactHero: React.FC = () => {
   return (
@@ -15,7 +18,7 @@ const ContactHero: React.FC = () => {
       <MotionSection
         delay={0.5}
         direction="fade"
-        className="w-full lg:w-1/2 pr-0 lg:pr-4 lg:mt-15 md:mt-10"
+        className="w-full lg:w-1/2 pr-0 lg:mt-16"
       >
         <h1 className="text-[28px] md:text-[32px] lg:text-[52px] lg:leading-[80px] font-bold text-[#191818] text-center lg:text-left">
           We’re Here to Collaborate
@@ -37,7 +40,11 @@ const ContactHero: React.FC = () => {
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
             >
-              <FaWhatsapp className="text-[#191818] w-[18px] h-[18px]" />
+              <img
+                src={WhatsappIcon}
+                alt="WhatsApp"
+                className="w-[18px] h-[18px]"
+              />
             </a>
 
             {/* Email */}
@@ -47,7 +54,7 @@ const ContactHero: React.FC = () => {
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
             >
-              <AiOutlineMail className="text-[#191818] w-[18px] h-[18px]" />
+              <IoMailOutline className="text-[#191818] w-[18px] h-[18px]" />
             </a>
 
             {/* Telephone */}
@@ -57,7 +64,11 @@ const ContactHero: React.FC = () => {
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
             >
-              <IoIosCall className="text-[#191818] w-[18px] h-[18px]" />
+              <img
+                src={TelephoneIcon}
+                alt="Call"
+                className="w-[16px] h-[16px]"
+              />
             </a>
           </div>
         </div>
@@ -67,7 +78,7 @@ const ContactHero: React.FC = () => {
       <MotionSection
         delay={0.5}
         direction="right"
-        className="hidden lg:block w-full lg:w-1/2 relative h-[525px] translate-x-16"
+        className="hidden lg:block w-full lg:w-1/2 relative h-[570px] translate-x-16"
       >
         {/* Shifted Inner Wrapper */}
         <div className="relative w-full h-full ">
@@ -110,18 +121,18 @@ const ContactHero: React.FC = () => {
       <MotionSection
         delay={0.5}
         direction="up"
-        className="lg:hidden w-full flex flex-col items-center gap-4 mt-8"
+        className="lg:hidden w-full flex flex-col items-center gap-0 mt-8 "
       >
         {/* Images Row */}
-        <div className="w-full flex justify-center gap-4">
-          <div className="w-[45%] rounded-lg overflow-hidden">
+        <div className="w-full flex justify-between gap-4">
+          <div className="w-[50%] rounded-lg overflow-hidden">
             <img
               src={Image1}
               alt="Collaboration"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="w-[45%] rounded-lg overflow-hidden">
+          <div className="w-[50%] rounded-lg overflow-hidden">
             <img
               src={Image2}
               alt="Office"
@@ -131,15 +142,22 @@ const ContactHero: React.FC = () => {
         </div>
 
         {/* Social Media Buttons */}
-        <div className="w-full flex justify-end gap-4 mt-4">
+        <div className="w-full flex justify-start gap-4 mt-6">
+          {/* Whatsapp */}
           <a
             href="https://wa.me/94768572709"
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
           >
-            <FaWhatsapp className="text-[#191818] w-[18px] h-[18px]" />
+            <img
+              src={WhatsappIcon}
+              alt="WhatsApp"
+              className="w-[16px] h-[16px]"
+            />
           </a>
+
+          {/* Email */}
           <a
             href="mailto:info@allinoneholdings.com"
             target="_blank"
@@ -148,13 +166,15 @@ const ContactHero: React.FC = () => {
           >
             <AiOutlineMail className="text-[#191818] w-[18px] h-[18px]" />
           </a>
+
+          {/* Telephone */}
           <a
             href="tel:+94812121051"
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
           >
-            <IoIosCall className="text-[#191818] w-[18px] h-[18px]" />
+            <img src={TelephoneIcon} alt="Call" className="w-[16px] h-[16px]" />
           </a>
         </div>
       </MotionSection>
