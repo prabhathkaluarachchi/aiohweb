@@ -6,32 +6,47 @@ import Image3 from "../../assets/contact/image3.png";
 import Mesh from "../../assets/contact/mesh.png";
 import WhatsappIcon from "../../assets/contact/whatsapp.svg";
 import TelephoneIcon from "../../assets/contact/telephone.svg";
+import EmailIcon from "../../assets/contact/mail.svg";
 
-import MotionSection from "../common/MotionSection";
-import { AiOutlineMail } from "react-icons/ai";
-import { IoMailOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 const ContactHero: React.FC = () => {
   return (
     <>
       {/* Left Side: Text */}
-      <MotionSection
-        delay={0.5}
-        direction="fade"
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
         className="w-full lg:w-1/2 pr-0 lg:mt-16"
       >
-        <h1 className="text-[28px] md:text-[32px] lg:text-[52px] lg:leading-[80px] font-bold text-[#191818] text-center lg:text-left">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-[28px] md:text-[32px] lg:text-[52px] lg:leading-[80px] font-bold text-[#191818] text-center lg:text-left"
+        >
           We’re Here to Collaborate
           <br />
           Let’s <span className="text-[#02ec97]">Connect</span>
-        </h1>
+        </motion.h1>
 
-        <p className="text-[16px] lg:text-[20px] leading-7 lg:leading-8 text-[#191818] mt-6 font-light text-justify">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="text-[16px] lg:text-[20px] leading-7 lg:leading-8 text-[#191818] mt-6 font-light text-justify"
+        >
           Got a question, an idea, or a project in mind? We’re always excited to
           collaborate and help bring your vision to life. Drop us a message and
           we’ll get back to you as soon as possible.
-        </p>
-        <div className="hidden lg:block lg:mt-20 mt-10 w-full">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="hidden lg:block lg:mt-20 mt-10 w-full"
+        >
           <div className="flex gap-4 justify-center lg:justify-start">
             {/* Whatsapp */}
             <a
@@ -54,7 +69,7 @@ const ContactHero: React.FC = () => {
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
             >
-              <IoMailOutline className="text-[#191818] w-[18px] h-[18px]" />
+              <img src={EmailIcon} alt="Email" className="w-[18px] h-[18px]" />
             </a>
 
             {/* Telephone */}
@@ -71,13 +86,14 @@ const ContactHero: React.FC = () => {
               />
             </a>
           </div>
-        </div>
-      </MotionSection>
+        </motion.div>
+      </motion.div>
 
       {/* Right Side: Images - Desktop Only */}
-      <MotionSection
-        delay={0.5}
-        direction="right"
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
         className="hidden lg:block w-full lg:w-1/2 relative h-[570px] translate-x-16"
       >
         {/* Shifted Inner Wrapper */}
@@ -115,12 +131,13 @@ const ContactHero: React.FC = () => {
             />
           </div>
         </div>
-      </MotionSection>
+      </motion.div>
 
       {/* Mobile/Tablet Images + Social Buttons */}
-      <MotionSection
-        delay={0.5}
-        direction="up"
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
         className="lg:hidden w-full flex flex-col items-center gap-0 mt-8 "
       >
         {/* Images Row */}
@@ -153,7 +170,7 @@ const ContactHero: React.FC = () => {
             <img
               src={WhatsappIcon}
               alt="WhatsApp"
-              className="w-[16px] h-[16px]"
+              className="w-[20px] h-[20px]"
             />
           </a>
 
@@ -164,7 +181,7 @@ const ContactHero: React.FC = () => {
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
           >
-            <AiOutlineMail className="text-[#191818] w-[18px] h-[18px]" />
+            <img src={EmailIcon} alt="Email" className="w-[18px] h-[18px]" />
           </a>
 
           {/* Telephone */}
@@ -177,7 +194,7 @@ const ContactHero: React.FC = () => {
             <img src={TelephoneIcon} alt="Call" className="w-[16px] h-[16px]" />
           </a>
         </div>
-      </MotionSection>
+      </motion.div>
     </>
   );
 };
