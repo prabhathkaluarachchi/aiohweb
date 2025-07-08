@@ -6,7 +6,7 @@ import { CiFacebook } from "react-icons/ci";
 import { IoLogoInstagram } from "react-icons/io";
 import { PiGoogleLogo } from "react-icons/pi";
 
-import MotionSection from "../common/MotionSection";
+
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
