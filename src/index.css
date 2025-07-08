@@ -1,7 +1,9 @@
 @import "tailwindcss";
+@import "./theme.css";
+
 html, body, #root {
   height: 100%;
-  background-color: #F5F5F5; /* Same bg as your div */
+  background-color: var(--color-background);
   margin: 0;
   padding: 0;
 }

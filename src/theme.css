@@ -1,0 +1,29 @@
+@theme{
+    --color-primary: #02ec97;
+    --color-secondary: #191818;
+    --color-ternary: #4B4B4B;
+    --color-background: #F5F5F5;
+
+    /* --text-header: 96px;
+    --text-subheader: 32px;
+    --text-para: 24px;
+    --text-navlink: 18px; */
+}
+/* body {
+  font-family: 'Roboto';
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.text-theme {
+  color: var(--color-text);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-primary {
+  color: var(--color-primary);
+} */
+
