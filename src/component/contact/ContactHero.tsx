@@ -94,7 +94,7 @@ const ContactHero: React.FC = () => {
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="hidden lg:block w-full lg:w-1/2 relative h-[570px] translate-x-16"
+        className="hidden lg:block w-full lg:w-1/2 relative h-[520px] translate-x-16"
       >
         {/* Shifted Inner Wrapper */}
         <div className="relative w-full h-full ">
