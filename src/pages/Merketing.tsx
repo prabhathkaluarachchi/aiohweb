@@ -1,4 +1,4 @@
-import Contact from "../component/Marketing/Contact";
+import Contact from "../component/Marketing/ContactSection";
 import Hero from "../component/Marketing/Hero";
 import Process from "../component/Marketing/Process";
 import RecentWork from "../component/Marketing/RecentWork";

@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import { useLocation } from "react-router-dom";
 
-const Contact: React.FC = () => {
+const ContactSection: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
 
   // Styles for the text fields
@@ -433,4 +433,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default ContactSection;
