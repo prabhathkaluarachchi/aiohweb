@@ -74,7 +74,7 @@ const ContactHero: React.FC = () => {
 
             {/* Telephone */}
             <a
-              href="tel:+94812121051"
+              href="tel:+94776722709"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
@@ -91,7 +91,7 @@ const ContactHero: React.FC = () => {
 
       {/* Right Side: Images - Desktop Only */}
       <motion.div
-        initial={{ opacity: 0, x: 100 }}
+        initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         className="hidden lg:block w-full lg:w-1/2 relative h-[520px] translate-x-16"
@@ -135,7 +135,7 @@ const ContactHero: React.FC = () => {
 
       {/* Mobile/Tablet Images + Social Buttons */}
       <motion.div
-        initial={{ opacity: 0, x: 100 }}
+        initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         className="lg:hidden w-full flex flex-col items-center gap-0 mt-8 "
