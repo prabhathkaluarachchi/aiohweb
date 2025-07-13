@@ -8,7 +8,10 @@ import Box from "@mui/material/Box";
 import FacebookIcon from "../../assets/contact/facebook.svg";
 import InstagramIcon from "../../assets/contact/instagram.svg";
 import GoogleIcon from "../../assets/contact/google.svg";
-import RoboImage from "../../assets/contact/robo.png";
+import LinkIcon from "../../assets/contact/linkedin.svg";
+import XIcon from "../../assets/contact/x.svg";
+import AIOHImage from "../../assets/contact/aiohlogo.png";
+
 
 import MotionSection from "../common/MotionSection";
 
@@ -71,16 +74,16 @@ const ContactForm: React.FC = () => {
           console.log(result.text);
           Swal.fire({
             title: "Message Sent!",
-            text: "We’ll get back to you soon.",
-            imageUrl: RoboImage,
-            imageWidth: 60,
-            imageHeight: 60,
+            html: "Thanks for contacting us.<br/>We'll get back to you soon.",
+            imageUrl: AIOHImage,
+            imageWidth: 200,
             imageAlt: "Success",
             showConfirmButton: true,
             confirmButtonText: "OK",
             customClass: {
               popup: "rounded-xl p-6",
               title: "text-[22px] font-semibold",
+              image: "object-contain", // Prevents image stretching
               confirmButton:
                 "w-full mt-4 bg-[#02ec97] text-[#191818] text-[18px] font-medium rounded-full py-[12px] px-6 hover:bg-[#02ec97]/80 hover:text-[#191818]/80 transition cursor-pointer",
             },
@@ -125,7 +128,7 @@ const ContactForm: React.FC = () => {
       </MotionSection>
       {/* Contact Form */}
       <div className="w-full lg:w-1/2 pr-0 lg:pr-4 mb-4">
-        <MotionSection delay={0.5} direction="fadeRight">
+        <MotionSection delay={0.5} direction="fadeUp">
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
             <Box sx={{ width: "100%" }}>
               <TextField
@@ -293,8 +296,7 @@ const ContactForm: React.FC = () => {
             Reach Out, We're Listening
           </h2>
           <p className="text-[16px] lg:text-[18px] leading-[26px] lg:leading-[28px] text-[#191818] mt-6 font-light mb-[-20px]">
-            We’re ready to assist. Share the details below and <br /> we’ll get
-            back to you soon.
+            We’re ready to assist. Share your technology needs below, <br /> and we’ll get back to you soon.
           </p>
         </div>
 
@@ -317,20 +319,20 @@ const ContactForm: React.FC = () => {
           {/* Card 2 - Phone - Gradient */}
           <MotionSection
             delay={0.7}
-            direction="left"
+            direction="right"
             className="rounded-xl p-6 shadow-sm text-white  bg-[linear-gradient(180deg,_#01213A_0%,_#035BA0_100%)]"
           >
             <p className="text-[18px] font-normal mb-1">Phone :</p>
             <p className="text-[16px] text-white leading-[32px] font-light">
               +94 81 2121 051 <br />
-              +94 81 2121 051
+              +94 77 6722 709
             </p>
           </MotionSection>
 
           {/* Card 3 - Email */}
           <MotionSection
             delay={0.7}
-            direction="left"
+            direction="right"
             className="bg-white rounded-xl p-6 shadow-sm"
           >
             <p className="text-[18px] font-normal mb-1">E-mail :</p>
@@ -389,6 +391,25 @@ const ContactForm: React.FC = () => {
                   alt="Google"
                   className="w-[18px] h-[18px]"
                 />
+              </a>
+
+              {/* Linkedin */}
+              <a
+                href="https://lk.linkedin.com/company/all-in-one-holdings"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
+              >
+                <img src={LinkIcon} alt="X" className="w-[18px] h-[18px]" />
+              </a>
+              {/* X com */}
+              <a
+                href="https://x.com/allinoneholding"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
+              >
+                <img src={XIcon} alt="X" className="w-[18px] h-[18px]" />
               </a>
             </div>
           </MotionSection>
