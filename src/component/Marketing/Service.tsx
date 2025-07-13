@@ -18,44 +18,44 @@ const services = [
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc1,
+    path: "/marketing/brand-strategy",
   },
   {
     title: "Social Media Management",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc2,
+    path: "/marketing/social-media-management",
   },
   {
     title: "SEO Audit and Setup",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc3,
+    path: "/marketing/seo-audit-and-setup",
   },
   {
     title: "Digital Marketing Consulting",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc4,
+    path: "/marketing/digital-marketing-consulting",
   },
   {
     title: "Social Media Advertising",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc5,
+    path: "/marketing/social-media-advertising",
   },
   {
     title: "Brand Strategy Sample",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc6,
+    path: "/marketing/brand-strategy-sample",
   },
 ];
-
-const slugify = (text: string) =>
-  text
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]+/g, "");
 
 const Service: React.FC = () => {
   const navigate = useNavigate();
@@ -107,11 +107,11 @@ const Service: React.FC = () => {
 
             {/* Floating Label with Outline */}
             <div className="absolute top-4 left-4 right-4 items-center z-50 mx-auto">
-              <span className="absolute -top-3.5 md:-top-2.5 lg:-top-3  left-4 mr-4 rounded-xl bg-white/0 backdrop-blur-lg px-1 text-slate-400 text-sm md:text-md lg:text-lg font-medium text-white">
+              <span className="absolute -top-3.5 md:-top-2.5 lg:-top-3  left-4 mr-4 rounded-xl bg-white/0 backdrop-blur-lg px-1 text-sm md:text-md lg:text-lg font-medium text-white">
                 {service.title}
               </span>
             </div>
-            <div className="absolute inset-0 rounded-xl border-3 border-white z-40 pointer-events-none m-3 md:m-4 lg:m-4.5"></div>
+            <div className="absolute inset-0 rounded-xl border-3 border-white z-40 pointer-events-none m-3 md:m-4 lg:m-4.5" />
 
             {/* explore button -desktop/tab */}
             <div className="group-hover:hidden hidden lg:block">
@@ -135,11 +135,7 @@ const Service: React.FC = () => {
                 {/* explore button - in hover sec */}
                 <button
                   key={index}
-                  onClick={() =>
-                    navigate(`/services/${slugify(service.title)}`, {
-                      state: service,
-                    })
-                  }
+                  onClick={() => navigate(service.path)}
                   className="hidden md:block w-full md:w-fit md:my-2 lg:my-4 px-4 py-2 bg-primary hover:bg-primary/80 text-xs rounded-full cursor-pointer font-medium"
                 >
                   Explore Service
@@ -147,11 +143,7 @@ const Service: React.FC = () => {
 
                 {/* explore button - mobile */}
                 <button
-                  onClick={() =>
-                    navigate(`/services/${slugify(service.title)}`, {
-                      state: service,
-                    })
-                  }
+                  onClick={() => navigate(service.path)}
                   className=" md:hidden absolute bottom-5 right-7 md:bottom-7 md:right-7 bg-primary text-secondary w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full z-10 group-hover:scale-110 transition cursor-pointer"
                 >
                   <GoArrowUpRight className="text-base md:text-lg" />
