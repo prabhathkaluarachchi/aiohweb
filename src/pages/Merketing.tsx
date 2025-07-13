@@ -11,8 +11,8 @@ const Merketing: React.FC = () => {
     <>
       <div className="m-3.5 text-text">
         {/* Header */}
-        <header className="bg-[#01213A] mb-3.5 h-[67px] rounded-[20px]">
-          <img src={nav} />
+        <header className="bg-[#01213A] mb-3.5 h-12 md:h-[67px] rounded-[20px] flex items-center justify-center">
+          <img src={nav} className="w-full h-auto object-fill" />
         </header>
 
         {/* Hero*/}
