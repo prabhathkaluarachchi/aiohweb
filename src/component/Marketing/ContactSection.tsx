@@ -1,16 +1,19 @@
 import { useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
-import { CiFacebook } from "react-icons/ci";
-import { IoLogoInstagram } from "react-icons/io";
-import { PiGoogleLogo } from "react-icons/pi";
-
+import FacebookIcon from "../../assets/contact/facebook.svg";
+import InstagramIcon from "../../assets/contact/instagram.svg";
+import GoogleIcon from "../../assets/contact/google.svg";
+import RoboImage from "../../assets/contact/robo.png";
 
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
-import { useLocation } from "react-router-dom";
+
+import { motion } from "framer-motion";
 
 const ContactSection: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -112,10 +115,21 @@ const ContactSection: React.FC = () => {
         (result) => {
           console.log(result.text);
           Swal.fire({
-            icon: "success",
             title: "Message Sent!",
             text: "We’ll get back to you soon.",
-            confirmButtonColor: "#02ec97",
+            imageUrl: RoboImage,
+            imageWidth: 60,
+            imageHeight: 60,
+            imageAlt: "Success",
+            showConfirmButton: true,
+            confirmButtonText: "OK",
+            customClass: {
+              popup: "rounded-xl p-6",
+              title: "text-[22px] font-semibold",
+              confirmButton:
+                "w-full mt-4 bg-[#02ec97] text-[#191818] text-[18px] font-medium rounded-full py-[12px] px-6 hover:bg-[#02ec97]/80 hover:text-[#191818]/80 transition cursor-pointer",
+            },
+            buttonsStyling: false,
           });
           form.current?.reset();
           setSelectedSubService("");
@@ -188,8 +202,12 @@ const ContactSection: React.FC = () => {
   };
 
   // Default selected service based on current path
+  const capitalizeFirstLetter = (str: string) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
+
   const defaultService =
-    services.find((s) => s.value === currentPath)?.value || "";
+    services.find((s) => s.value === capitalizeFirstLetter(currentPath))
+      ?.value || "";
 
   // State to manage selected main service
   const [selectedMainService, setSelectedMainService] =
@@ -203,7 +221,12 @@ const ContactSection: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row items-start lg:gap-16 mx-auto gap-16 w-11/12 py-10">
       {/* Left sec */}
-      <div className="w-full lg:w-1/2 space-y-10 lg:space-y-6 lg:pt-4">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-full lg:w-1/2 space-y-10 lg:space-y-6 lg:pt-4"
+      >
         <div className="lg:hidden block text-center justify-center">
           <h1 className="text-[26px] md:text-3xl lg:text-5xl lg:leading-[62px] font-bold">
             Partner with us to build what’s{" "}
@@ -337,22 +360,45 @@ const ContactSection: React.FC = () => {
             {isSending ? "Sending..." : "Send Message"}
           </button>
         </form>
-      </div>
+      </motion.div>
 
       {/* Right sec */}
       <div className="w-full lg:w-1/2 space-y-6">
-        <div className="hidden lg:block">
-          <h1 className="text-[26px] md:text-3xl lg:text-5xl lg:leading-[62px] font-bold">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="hidden lg:block"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-[26px] md:text-3xl lg:text-5xl lg:leading-[62px] font-bold"
+          >
             Partner with us to build what’s{" "}
             <span className="text-primary">next</span>
-          </h1>
-          <p className="mt-4 text-sm lg:text-lg leading-6 md:leading-7 lg:leading-8 font-light text-justify">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="mt-4 text-sm lg:text-lg leading-6 md:leading-7 lg:leading-8 font-light text-justify"
+          >
             Have an idea? Let’s bring it to life. Whether it's a bold vision or
             a simple spark, we're here to help turn your ideas into reality.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
+
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-6 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
+        >
           {/* Address Card */}
           <div className="bg-gradient-to-b from-[#01213A] from-0% to-[#035BA0] to-100% rounded-[20px] p-6">
             <p className="text-lg font-normal mb-1 text-white ">Address :</p>
@@ -363,26 +409,27 @@ const ContactSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex flex-row sm:flex-col gap-2 sm:gap-0 px-4 py-6 sm:p-0">
-            {/* Phone - Card */}
-            <div className="flex-1 rounded-[20px] md:p-6 bg-white items-center md:items-start">
-              <p className="text-lg font-normal mb-1">Phone :</p>
-              <div className="text-base leading-6 font-light">
-                <p>+94 81 2121 051</p>
-                <p>+94 76 8572 709</p>
-              </div>
+          {/* <div className="flex flex-row sm:flex-col gap-2 sm:gap-0 px-4 py-6 sm:p-0"> */}
+          {/* Phone - Card */}
+          <div className="flex-1 rounded-[20px] p-6 bg-white items-center md:items-start shadow-sm">
+            <p className="text-lg font-normal mb-1">Phone :</p>
+            <div className="flex flex-row sm:flex-col space-x-2 text-base leading-6 font-light items-center sm:items-start">
+              <p>+94 81 2121 051</p>
+              <p className="block sm:hidden text-lg font-serif">/</p>
+              <p>+94 76 8572 709</p>
             </div>
-            {/* Email Card - mpbile */}
-            <div className="sm:hidden block flex-1 bg-white rounded-[20px] md:p-6">
+          </div>
+          {/* Email Card - mpbile */}
+          {/* <div className="sm:hidden block flex-1 bg-white rounded-[20px] md:p-6">
               <p className="text-lg font-normal mb-1">E-mail :</p>
               <p className="text-base  leading-6 font-light">
                 info@allinoneholdings.com
               </p>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
           {/* Email Card - tab & desktop*/}
-          <div className="hidden sm:block bg-white rounded-[20px] p-6">
+          <div className="flex-1 bg-white rounded-[20px] p-6 shadow-sm">
             <p className="text-lg font-normal mb-1">E-mail :</p>
             <p className="text-base  leading-6 font-light">
               info@allinoneholdings.com
@@ -401,9 +448,13 @@ const ContactSection: React.FC = () => {
                 href="https://www.facebook.com/allinoneholdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:bg-primary/80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
-                <CiFacebook className="w-6 h-6" />
+                <img
+                  src={FacebookIcon}
+                  alt="Facebook"
+                  className="w-[18px] h-[18px]"
+                />
               </a>
 
               {/* Instagram */}
@@ -411,9 +462,13 @@ const ContactSection: React.FC = () => {
                 href="https://www.instagram.com/all_in_one_holdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:bg-primary/80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
-                <IoLogoInstagram className="w-6 h-6" />
+                <img
+                  src={InstagramIcon}
+                  alt="Instagram"
+                  className="w-[18px] h-[18px]"
+                />
               </a>
 
               {/* Google */}
@@ -421,13 +476,17 @@ const ContactSection: React.FC = () => {
                 href="https://g.co/kgs/Cw4rrUZ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:bg-primary/80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
-                <PiGoogleLogo className="w-6 h-6" />
+                <img
+                  src={GoogleIcon}
+                  alt="Google"
+                  className="w-[18px] h-[18px]"
+                />
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
