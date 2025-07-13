@@ -121,14 +121,14 @@ const Service: React.FC = () => {
             </div>
 
             {/* hover effect */}
-            <div className="block lg:hidden group-hover:block">
+            <div className="hidden md:block lg:hidden group-hover:block">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0 }}
-                className="absolute h-[50%] py-2 bottom-0 left-0 w-full bg-[#01213A]/20 backdrop-blur-md flex-col items-center justify-between z-30 px-8"
+                className="absolute sm:min-h-[60%] md:min-h-[50%] py-4 md:py-2 bottom-0 left-0 w-full bg-[#01213A]/20 backdrop-blur-md flex-col items-center justify-between z-30 px-8"
               >
-                <p className="text-justify leading-[22px] text-xs lg:text-sm text-white">
+                <p className="text-left md:text-justify leading-[22px] text-xs lg:text-sm text-white">
                   {service.description}
                 </p>
 
@@ -140,11 +140,22 @@ const Service: React.FC = () => {
                 >
                   Explore Service
                 </button>
-
+              </motion.div>
+            </div>
+            <div className="block md:hidden">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0 }}
+                className="absolute sm:min-h-[60%] md:min-h-[50%] pt-2 pb-6 md:py-2 bottom-0 left-0 w-full bg-[#01213A]/20 backdrop-blur-md flex-col items-end md:items-center flex justify-end md:justify-between z-30 px-8"
+              >
                 {/* explore button - mobile */}
+                <p className="text-left md:text-justify leading-[22px] text-xs lg:text-sm text-white">
+                  {service.description}
+                </p>
                 <button
                   onClick={() => navigate(service.path)}
-                  className=" md:hidden absolute bottom-5 right-7 md:bottom-7 md:right-7 bg-primary text-secondary w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full z-10 group-hover:scale-110 transition cursor-pointer"
+                  className="md:hidden bg-primary text-secondary w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full group-hover:scale-110 transition cursor-pointer"
                 >
                   <GoArrowUpRight className="text-base md:text-lg" />
                 </button>
