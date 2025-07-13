@@ -225,6 +225,7 @@ const ContactSection: React.FC = () => {
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
         className="w-full lg:w-1/2 space-y-10 lg:space-y-6 lg:pt-4"
       >
         <div className="lg:hidden block text-center justify-center">
