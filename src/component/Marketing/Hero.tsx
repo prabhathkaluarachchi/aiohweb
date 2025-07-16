@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
               }
             }}
           >
-            Explore Our Services
+            <span className="mb-1">Explore Our Services</span>
           </button>
         </motion.div>
 
