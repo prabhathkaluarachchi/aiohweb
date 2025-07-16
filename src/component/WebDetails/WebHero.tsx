@@ -31,7 +31,7 @@ const WebHero: React.FC = () => {
         </div>
 
         <button
-          className="w-fit lg:mt-10 px-6 py-3 bg-primary hover:bg-primary/80 text-base lg:text-xl rounded-full cursor-pointer font-med flex items-center justify-center mb-10 mx-auto lg:mx-0"
+          className="w-fit mt-10 px-6 py-3 bg-primary hover:bg-primary/80 text-base lg:text-xl rounded-full cursor-pointer font-medium flex items-center justify-center mb-10 ml-0"
           onClick={() => {
             const section = document.getElementById("services");
             if (section) {
