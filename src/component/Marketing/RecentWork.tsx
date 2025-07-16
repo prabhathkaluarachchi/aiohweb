@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { GoArrowUpRight } from "react-icons/go";
+import { IoClose } from "react-icons/io5";
+import { LuCircleChevronRight } from "react-icons/lu";
+import { LiaHandPointRightSolid } from "react-icons/lia";
+import { ImCheckmark2 } from "react-icons/im";
 
 import rw1 from "../../assets/recentWork/rw1.png";
 import rw2 from "../../assets/recentWork/rw2.png";
@@ -11,8 +15,6 @@ import rw5 from "../../assets/recentWork/rw5.png";
 import rw6 from "../../assets/recentWork/rw6.png";
 import rw7 from "../../assets/recentWork/rw7.png";
 import rw8 from "../../assets/recentWork/rw8.png";
-import { IoClose } from "react-icons/io5";
-import { LuCircleChevronRight } from "react-icons/lu";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -234,6 +236,15 @@ const RecentWork: React.FC = () => {
   // Popup state management
   const [popupData, setPopupData] = useState<Project | null>(null);
 
+  // Stop body scroll when popup is open
+  useEffect(() => {
+    if (popupData) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [popupData]);
+
   // State to manage current page for pagination
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -255,6 +266,7 @@ const RecentWork: React.FC = () => {
 
     let interval: NodeJS.Timeout | null = null;
 
+    // Auto slide on mobile
     if (screen === "mobile") {
       interval = setInterval(() => {
         setCurrentPage((prev) =>
@@ -276,7 +288,7 @@ const RecentWork: React.FC = () => {
 
     // Skip scroll if auto-slide is active on mobile
     if (screen === "mobile") return;
-
+    // Check if section is in view
     const rect = section.getBoundingClientRect();
     const isInView =
       rect.top >= 0 &&
@@ -300,6 +312,7 @@ const RecentWork: React.FC = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const visibleProjects = projects.slice(startIndex, startIndex + itemsPerPage);
 
+  // Handle previous page click
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => {
@@ -315,6 +328,7 @@ const RecentWork: React.FC = () => {
     }
   };
 
+  // Handle next page click
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage((prev) => {
@@ -331,7 +345,7 @@ const RecentWork: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto py-4 w-11/12">
+    <div className="mx-auto w-11/12">
       {/* sec heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -394,7 +408,7 @@ const RecentWork: React.FC = () => {
                 </p>
               </div>
 
-              <div className="relative flex items-center justify-center md:mt-4">
+              <div className="relative flex items-center justify-center md:mt-4 scale-100 group-hover:scale-105 transition-transform duration-300 ease-out">
                 {/* SHAPE back - hover */}
                 <div className="hidden group-hover:block absolute -top-3 sm:-top-4.5 w-4/5 h-16 bg-white rounded-[10px] opacity-60 z-0" />
 
@@ -458,7 +472,7 @@ const RecentWork: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 w-full z-50 bg-secondary/10 backdrop-blur-xs"
+            className="fixed inset-0 w-full z-50"
             onClick={() => setPopupData(null)}
           >
             <motion.div
@@ -479,17 +493,19 @@ const RecentWork: React.FC = () => {
 
               {/* Left sec - Image */}
               <div className="flex lg:flex-1/2">
-                <div className="relative w-full lg:h-4/5 rounded-t-[20px] overflow-hidden group shadow-lg pb-16">
+                <div className="relative w-full lg:h-4/5 rounded-[20px] overflow-hidden group shadow-lg">
                   <img
                     src={popupData.image}
                     alt={popupData.title}
                     className="w-full h-full object-fill object-top"
-                    // className="w-full h-auto object-cover object-top"
+                    // className="w-full h-full object-cover object-top"
                   />
-                  <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-4 bg-gradient-to-t from-secondary/20 to-transparent backdrop-blur-md rounded-b-[20px] z-0">
-                    <button className="flex items-center justify-center gap-1 w-fit px-6 py-3 bg-primary hover:bg-primary/80 text-base rounded-full cursor-pointer">
-                      <span className="leading-none">Explore</span>
-                      <GoArrowUpRight className="text-base leading-none" />
+                  <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-2 md:p-4 bg-white/20 backdrop-blur-md rounded-b-[20px] z-0">
+                    <button className="text-secondary flex items-center justify-center gap-1 w-fit px-6 py-2 bg-primary hover:bg-primary/80 rounded-full cursor-pointer">
+                      <span className="mb-1 text-sm md:text-base font-medium">
+                        Explore
+                      </span>
+                      <GoArrowUpRight className="text-sm md:text-lg" />
                     </button>
                   </div>
                 </div>
@@ -510,9 +526,12 @@ const RecentWork: React.FC = () => {
                       <h3 className="text-lg md:text-2xl leading-6 md:leading-7 lg:leading-8 font-semibold mt-10 mb-4">
                         Key Challenges We Solved
                       </h3>
-                      <ul className="text-base md:text-lg font-light space-y-1 list-disc ml-5">
+                      <ul className="text-base md:text-lg font-light space-y-2">
                         {popupData.challenges.map((item, idx) => (
-                          <li key={idx}>{item}</li>
+                          <li key={idx} className="flex items-start gap-2">
+                            <ImCheckmark2 className="text-white mt-1 shrink-0" />
+                            <span>{item}</span>
+                          </li>
                         ))}
                       </ul>
                     </>
@@ -523,9 +542,12 @@ const RecentWork: React.FC = () => {
                       <h3 className="text-lg md:text-2xl leading-6 md:leading-7 lg:leading-8 font-semibold mt-10 mb-4">
                         Our Strategic Solutions & Achievements
                       </h3>
-                      <ul className="text-base md:text-lg font-light leading-8 space-y-1 list-disc ml-5">
+                      <ul className="text-base md:text-lg font-light space-y-2">
                         {popupData.solutions.map((item, idx) => (
-                          <li key={idx}>{item}</li>
+                          <li key={idx} className="flex items-start gap-2">
+                            <LiaHandPointRightSolid className="text-white mt-1.5 shrink-0" />
+                            <span>{item}</span>
+                          </li>
                         ))}
                       </ul>
                     </>
@@ -534,7 +556,7 @@ const RecentWork: React.FC = () => {
 
                 <div className="mt-6 text-secondary">
                   <button className="w-fit my-4 px-6 py-4 rounded-full font-medium bg-primary hover:bg-primary/80 flex items-center justify-center gap-2 transition cursor-pointer">
-                    <span className="leading-none">View Project</span>
+                    <span className="leading-none mb-0.5">View Project</span>
                     <LuCircleChevronRight className="text-base leading-none" />
                   </button>
                 </div>
