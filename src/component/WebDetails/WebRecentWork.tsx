@@ -387,7 +387,7 @@ const WebRecentWork: React.FC = () => {
                 </p>
               </div>
 
-              <div className="relative flex items-center justify-center md:mt-4">
+              <div className="relative flex items-center justify-center md:mt-4 scale-100 group-hover:scale-105 transition-transform duration-300 ease-out">
                 {/* SHAPE back - hover */}
                 <div className="hidden group-hover:block absolute -top-3 sm:-top-4.5 w-4/5 h-16 bg-white rounded-[10px] opacity-60 z-0" />
 
@@ -479,7 +479,7 @@ const WebRecentWork: React.FC = () => {
                     className="w-full h-full object-fill object-top"
                     // className="w-full h-auto object-cover object-top"
                   />
-                  <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-4 bg-gradient-to-t from-secondary/20 to-transparent backdrop-blur-md rounded-b-[20px] z-0">
+                  <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-4 bg-gradient-to-t from-white/20 to-transparent backdrop-blur-md rounded-b-[20px] z-0">
                     <button className="flex items-center justify-center gap-1 w-fit px-6 py-3 bg-primary hover:bg-primary/80 text-base rounded-full cursor-pointer">
                       <span className="leading-none">Explore</span>
                       <GoArrowUpRight className="text-base leading-none" />

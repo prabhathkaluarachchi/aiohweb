@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 /* -------------------------------- data -------------------------------- */
 const steps = [
@@ -51,7 +52,7 @@ const StepItem: React.FC<StepItemProps> = ({ step, index }) => {
     <div className="relative w-full flex items-center group h-[14%] min-h-[80px]">
       {/* content box */}
       <div
-        className={`w-[46%] transition-all duration-300 text-left relative z-10 p-2.5 ${
+        className={`w-[44%] transition-all duration-300 text-left relative z-10 p-2.5 ${
           isLeft
             ? "pr-8 justify-start hover:bg-gradient-to-r from-[#02EC9770] to-transparent rounded-l-[20px]"
             : "pl-8 justify-start hover:bg-gradient-to-l from-[#02EC9770] to-transparent rounded-r-[20px] ml-auto"
@@ -155,26 +156,49 @@ const WebFramework: React.FC = () => {
   return (
     <>
       {/* ---------- DESKTOP TIMELINE ---------- */}
-      <div className="hidden lg:flex w-full h-[90vh] min-h-[700px] max-h-[900px] flex-col pt-10 pb-30 relative">
+      <div className="hidden lg:flex w-full h-[90vh] min-h-[700px] max-h-[900px] flex-col pt-6 pb-30 relative">
         {/* ---------- Middle vertical line ---------- */}
-        <div className="absolute left-1/2 top-[220px] bottom-[70px] w-[2px] -translate-x-1/2 bg-white/80 z-0" />
-        <div>
+        <motion.div
+          className="absolute left-1/2 top-[220px] bottom-[80px] w-[2px] -translate-x-1/2 bg-white/80 z-0"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <h2 className="text-center text-[26px] lg:text-[48px] font-bold text-white">
             The Way We Build
           </h2>
           <p className="text-center text-[16px] lg:text-[18px] text-white mt-0 font-light mb-12">
             How We Design, Develop, and Deliver Impactful Digital Products
           </p>
-        </div>
-        <div className="flex flex-col gap-0 relative h-full w-full max-w-full mx-auto">
+        </motion.div>
+        <motion.div
+          className="flex flex-col gap-0 relative h-full w-full max-w-full mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8 }}
+        >
           {steps.map((s, i) => (
             <StepItem key={i} step={s} index={i} />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* ---------- MOBILE ONLY VERTICAL SCROLL ---------- */}
-      <div className="lg:hidden w-full py-12 flex flex-col items-center">
+      <motion.div
+        className="lg:hidden w-full py-12 flex flex-col items-center"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8 }}
+      >
         <h2 className="text-center text-2xl font-medium text-white mb-4">
           The Way We Build
         </h2>
@@ -216,7 +240,7 @@ const WebFramework: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
