@@ -1,12 +1,19 @@
-import Contact from "../component/Marketing/ContactSection";
 import Hero from "../component/Marketing/Hero";
+import Service from "../component/Marketing/Service";
 import Process from "../component/Marketing/Process";
 import RecentWork from "../component/Marketing/RecentWork";
-import Service from "../component/Marketing/Service";
+import Contact from "../component/Marketing/ContactSection";
+
 import nav from "../assets/marketing/Navbar.png";
 import footer from "../assets/marketing/Footer.png";
 
+import { useEffect } from "react";
+
 const Merketing: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className="m-3.5 text-text">

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
 
 import {
   MdOutlineDashboard,
@@ -22,7 +22,7 @@ const steps = [
 
 const Process: React.FC = () => {
   return (
-    <div className="mx-auto py-4 text-white w-5/6 md:w-full">
+    <div className="mx-auto py-4 md:py-6 lg:py-12 text-white w-5/6 md:w-full">
       {/* sec heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
