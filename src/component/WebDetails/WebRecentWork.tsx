@@ -142,6 +142,13 @@ const projects = [
       "Real time experience of designing your car",
       "A comprehensive back-end platform that allowed real time updates",
     ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
   },
   {
     title: "Regency Travel House",

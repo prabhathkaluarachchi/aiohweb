@@ -152,7 +152,7 @@ const WebContact: React.FC = () => {
         </p>
       </MotionSection>
       {/* Contact Form */}
-      <div className="w-full lg:w-1/2 pr-0 lg:pr-4 mb-4">
+      <div className="w-full lg:w-1/2 pr-0 lg:pr-4 mb-0">
         <MotionSection delay={0.5} direction="fadeUp">
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
             <Box sx={{ width: "100%" }}>

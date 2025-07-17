@@ -36,28 +36,28 @@ function WebService() {
         </motion.div>
 
         {/* WebHero */}
-        <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-0">
+        <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-0 mb-30">
           <WebHero />
         </div>
       </section>
 
       {/* Section 2 */}
-      <section className="bg-[#01213A] mt-30 rounded-[20px]">
+      <section className="bg-[#01213A] mb-30 rounded-[20px]">
         <div className="w-11/12 mx-auto">
           <WebFramework />
         </div>
       </section>
 
       {/* Section 3 */}
-      <section id="WebRecentWork" className=" mt-28 rounded-[20px]">
+      <section id="WebRecentWork" className=" mb-30 rounded-[20px]">
         <div className="w-11/12 mx-auto">
           <WebRecentWork />
         </div>
       </section>
 
       {/* Section 4 */}
-      <section className="bg-transparent">
-        <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-10 mt-30 mb-30">
+      <section className="bg-white mt-30 mb-30 rounded-[20px] py-10">
+        <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-10 ">
           <WebContact />
         </div>
       </section>
