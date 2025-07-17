@@ -505,7 +505,10 @@ const RecentWork: React.FC = () => {
                       <span className="mb-1 text-sm md:text-base font-medium">
                         Explore
                       </span>
-                      <GoArrowUpRight className="text-sm md:text-lg" />
+                      <GoArrowUpRight
+                        style={{ strokeWidth: 1 }}
+                        className="text-sm md:text-base"
+                      />
                     </button>
                   </div>
                 </div>
