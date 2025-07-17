@@ -43,6 +43,10 @@ const ContactSection: React.FC = () => {
       color: "#191818",
       fontWeight: 400,
     },
+    "& .MuiFormHelperText-root": {
+      color: "#19181866",
+      fontSize: "12px",
+    },
   };
 
   // errors state
@@ -67,7 +71,9 @@ const ContactSection: React.FC = () => {
     }));
   };
 
-  const isValidPhone = (phone: string) => /^(\+94|0)?7|8\d{8}$/.test(phone);
+  const isValidPhone = (phone: string) => {
+    return /^\+\d{8,15}$/.test(phone);
+  };
 
   const isValidEmail = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -118,7 +124,7 @@ const ContactSection: React.FC = () => {
           console.log(result.text);
           Swal.fire({
             title: "Message Sent!",
-            html: "Thanks for contacting us.<br/>We'll get back to you soon.",
+            html: "Thanks for contacting us, We have received your message.<br/>We'll get back to you soon.",
             imageUrl: AIOHImage,
             imageWidth: 200,
             imageAlt: "Success",
@@ -128,6 +134,7 @@ const ContactSection: React.FC = () => {
               popup: "!rounded-[20px] p-6",
               title: "text-[22px] font-semibold",
               image: "object-contain",
+              htmlContainer: "!text-[16px]",
               confirmButton:
                 "w-full mt-4 bg-primary text-secondary text-lg font-medium rounded-full py-3 px-10 cursor-pointer",
             },
@@ -150,7 +157,7 @@ const ContactSection: React.FC = () => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            html: "Something went wrong.<br/>Please try again.",
+            html: "An unexpected error occurred on our system.<br/>Please try again in a few minutes",
             customClass: {
               popup: "!rounded-[20px] p-6",
               title: "text-[22px] font-semibold",
@@ -269,7 +276,9 @@ const ContactSection: React.FC = () => {
               fullWidth
               error={errors.from_phone}
               helperText={
-                errors.from_phone ? "Please enter a valid contact number." : ""
+                errors.from_phone
+                  ? "Please enter a valid contact number."
+                  : "e.g. +94xxxxxxxxx or up to 15 digits"
               }
               onChange={handleInputChange}
               sx={textFieldStyles}
@@ -361,7 +370,7 @@ const ContactSection: React.FC = () => {
           <button
             type="submit"
             disabled={isSending}
-            className={`w-full lg:w-fit my-4 lg:mt-6 px-6 py-3 rounded-full font-medium transition cursor-pointer ${
+            className={`w-full lg:w-fit my-4 lg:mt-6 px-6 py-3 rounded-full font-medium cursor-pointer ${
               isSending
                 ? "bg-primary/60 text-[#19181899] cursor-not-allowed"
                 : "bg-primary text-[#191818] hover:bg-primary/80"
@@ -419,27 +428,28 @@ const ContactSection: React.FC = () => {
             </p>
           </div>
 
-          {/* <div className="flex flex-row sm:flex-col gap-2 sm:gap-0 px-4 py-6 sm:p-0"> */}
-          {/* Phone - Card */}
-          <div className="flex-1 rounded-[20px] p-6 bg-white items-center md:items-start shadow-sm lg:shadow-none">
-            <p className="text-lg font-normal mb-1">Phone :</p>
-            <div className="flex flex-row sm:flex-col space-x-2 text-base leading-6 font-light items-center sm:items-start">
-              <p>+94 81 2121 051</p>
-              <p className="block sm:hidden text-lg font-serif">/</p>
-              <p>+94 76 8572 709</p>
+          <div className="flex flex-row sm:flex-col gap-2 sm:gap-0 px-4 py-6 sm:p-0">
+            {/* Phone - Card */}
+            <div className="flex-1 rounded-[20px] md:p-6 bg-white">
+              {/*shadow-sm lg:shadow-none*/}
+              <p className="text-lg font-normal text-start mb-1">Phone :</p>
+              <div className="flex flex-col text-sm md:text-base leading-6 font-light items-start">
+                <p>+94 81 2121 051</p>
+                {/* <p className="block sm:hidden text-lg font-serif">/</p> */}
+                <p>+94 76 8572 709</p>
+              </div>
             </div>
-          </div>
-          {/* Email Card - mpbile */}
-          {/* <div className="sm:hidden block flex-1 bg-white rounded-[20px] md:p-6">
+            {/* Email Card - mpbile */}
+            <div className="sm:hidden block flex-1 bg-white rounded-[20px] md:p-6">
               <p className="text-lg font-normal mb-1">E-mail :</p>
-              <p className="text-base  leading-6 font-light">
+              <p className="text-sm md:text-base leading-6 font-light">
                 info@allinoneholdings.com
               </p>
-            </div> */}
-          {/* </div> */}
+            </div>
+          </div>
 
           {/* Email Card - tab & desktop*/}
-          <div className="flex-1 bg-white rounded-[20px] p-6 shadow-sm lg:shadow-none">
+          <div className="hidden sm:block flex-1 bg-white rounded-[20px] p-2 md:p-6 text-center md:text-start">
             <p className="text-lg font-normal mb-1">E-mail :</p>
             <p className="text-base  leading-6 font-light">
               info@allinoneholdings.com
@@ -447,7 +457,7 @@ const ContactSection: React.FC = () => {
           </div>
 
           {/* Card 4 - Social Icons */}
-          <div className="rounded-[20px] p-6 flex flex-col items-center md:items-start justify-center mb-1">
+          <div className="rounded-[20px] p-2 md:p-6 flex flex-col items-center md:items-start justify-center mb-1">
             <p className="text-lg font-normal mb-2 text-center lg:text-left">
               Follow Us:
             </p>
@@ -458,7 +468,7 @@ const ContactSection: React.FC = () => {
                 href="https://www.facebook.com/allinoneholdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
               >
                 <img
                   src={FacebookIcon}
@@ -472,7 +482,7 @@ const ContactSection: React.FC = () => {
                 href="https://www.instagram.com/all_in_one_holdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
               >
                 <img
                   src={InstagramIcon}
@@ -486,7 +496,7 @@ const ContactSection: React.FC = () => {
                 href="https://g.co/kgs/Cw4rrUZ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
               >
                 <img
                   src={GoogleIcon}
@@ -500,7 +510,7 @@ const ContactSection: React.FC = () => {
                 href="https://lk.linkedin.com/company/all-in-one-holdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
               >
                 <img src={LinkIcon} alt="X" className="w-[18px] h-[18px]" />
               </a>
@@ -510,7 +520,7 @@ const ContactSection: React.FC = () => {
                 href="https://x.com/allinoneholding"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center transition hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
               >
                 <img src={XIcon} alt="X" className="w-[18px] h-[18px]" />
               </a>
