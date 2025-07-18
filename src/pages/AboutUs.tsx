@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+
 import Header from "../component/common/Header";
+import AboutHero from "../component/About/AboutHero";
 
 function WebService() {
   useEffect(() => {
@@ -10,9 +12,9 @@ function WebService() {
     <div className="w-full font-['Roboto'] min-h-screen p-3.5 overflow-x-hidden">
       <Header />
 
-      <section className="bg-red-400 rounded-[20px] lg:mb-30 mb-20">
-        <div className="w-11/12 mx-auto">
-          <h1 className="py-10">Hero Section</h1>
+      <section className="rounded-[20px] lg:mb-30 mb-20 bg-amber-200">
+        <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-0 lg:pt-14 bg-blue-100">
+          <AboutHero />
         </div>
       </section>
 
