@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
+import { TextField, MenuItem, Box, FormHelperText } from "@mui/material";
+import countries from "world-countries";
+import { motion } from "framer-motion";
 
 import FacebookIcon from "../../assets/contact/facebook.svg";
 import InstagramIcon from "../../assets/contact/instagram.svg";
@@ -10,12 +13,6 @@ import GoogleIcon from "../../assets/contact/google.svg";
 import LinkIcon from "../../assets/contact/linkedin.svg";
 import XIcon from "../../assets/contact/x.svg";
 import AIOHImage from "../../assets/contact/aiohlogo.png";
-
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import Box from "@mui/material/Box";
-
-import { motion } from "framer-motion";
 
 const ContactSection: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -71,7 +68,13 @@ const ContactSection: React.FC = () => {
     }));
   };
 
+  const [phone, setPhone] = useState({
+    countryCode: "94",
+    number: "",
+  });
+
   const isValidPhone = (phone: string) => {
+    // Validate international phone number format
     return /^\+\d{8,15}$/.test(phone);
   };
 
@@ -84,15 +87,17 @@ const ContactSection: React.FC = () => {
 
     const formData = new FormData(form.current);
     const name = formData.get("from_name")?.toString().trim();
-    const phone = formData.get("from_phone")?.toString().trim();
     const email = formData.get("from_email")?.toString().trim();
     const service = formData.get("main_service")?.toString().trim();
     const subService = formData.get("sub_service")?.toString().trim();
     const message = formData.get("message")?.toString().trim();
 
+    // Combine phone number with country code
+    const fullPhoneNumber = `+${phone.countryCode}${phone.number}`;
+
     const newErrors = {
       from_name: !name,
-      from_phone: !phone || !isValidPhone(phone),
+      from_phone: !phone.number || !isValidPhone(fullPhoneNumber),
       from_email: !email || !isValidEmail(email),
       main_service: !service,
       sub_service: !subService,
@@ -103,16 +108,13 @@ const ContactSection: React.FC = () => {
     const hasError = Object.values(newErrors).some(Boolean);
     if (hasError) return;
 
-    setErrors({
-      from_name: false,
-      from_phone: false,
-      from_email: false,
-      message: false,
-      main_service: false,
-      sub_service: false,
-    });
+    // Create a hidden input for the full phone number
+    const phoneInput = document.createElement("input");
+    phoneInput.type = "hidden";
+    phoneInput.name = "from_phone";
+    phoneInput.value = fullPhoneNumber;
+    form.current.appendChild(phoneInput);
 
-    // Start sending
     setIsSending(true);
 
     emailjs
@@ -270,19 +272,123 @@ const ContactSection: React.FC = () => {
 
           {/* Phone */}
           <Box sx={{ width: "100%" }}>
-            <TextField
-              name="from_phone"
-              label="Contact number"
-              fullWidth
-              error={errors.from_phone}
-              helperText={
-                errors.from_phone
-                  ? "Please enter a valid contact number."
-                  : "e.g. +94xxxxxxxxx or up to 15 digits"
-              }
-              onChange={handleInputChange}
-              sx={textFieldStyles}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                gap: 1,
+                width: "100%",
+                "& > *:first-of-type": {
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "20px 0 0 20px",
+                    borderRight: "none",
+                  },
+                },
+                "& > *:last-child": {
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "0 20px 20px 0",
+                  },
+                },
+              }}
+            >
+              {/* Country Code Selector */}
+              <TextField
+                select
+                name="country_code"
+                value={phone.countryCode}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setPhone((prev) => ({
+                    ...prev,
+                    countryCode: e.target.value,
+                  }));
+                  setErrors((prev) => ({
+                    ...prev,
+                    from_phone: !isValidPhone(
+                      `+${e.target.value}${phone.number}`
+                    ),
+                  }));
+                }}
+                sx={textFieldStyles}
+                SelectProps={{
+                  renderValue: (value: unknown) => (
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      {
+                        countries.find(
+                          (country) =>
+                            country.idd.root.replace("+", "") +
+                              (country.idd.suffixes[0] || "") ===
+                            value
+                        )?.flag
+                      }
+                      <Box sx={{ ml: 1 }}>+{value as string}</Box>
+                    </Box>
+                  ),
+                }}
+              >
+                {countries.map((country: any) => (
+                  <MenuItem
+                    key={country.cca2}
+                    value={
+                      country.idd.root.replace("+", "") +
+                      (country.idd.suffixes[0] || "")
+                    }
+                  >
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Box sx={{ mr: 1 }}>{country.flag}</Box>
+                      <Box>
+                        +
+                        {country.idd.root.replace("+", "") +
+                          (country.idd.suffixes[0] || "")}
+                      </Box>
+                      <Box sx={{ ml: 2, opacity: 0.7 }}>
+                        {country.name.common}
+                      </Box>
+                    </Box>
+                  </MenuItem>
+                ))}
+              </TextField>
+
+              {/* Phone Number Input */}
+              <TextField
+                name="phone_number"
+                value={phone.number}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  // Remove any non-digit characters
+                  const cleanedValue = e.target.value.replace(/\D/g, "");
+                  setPhone((prev) => ({
+                    ...prev,
+                    number: cleanedValue,
+                  }));
+                  setErrors((prev) => ({
+                    ...prev,
+                    from_phone: !isValidPhone(
+                      `+${phone.countryCode}${cleanedValue}`
+                    ),
+                  }));
+                }}
+                error={errors.from_phone}
+                placeholder="Phone number"
+                sx={{
+                  ...textFieldStyles,
+                  flex: 1,
+                  "& .MuiOutlinedInput-root": {
+                    paddingLeft: "14px",
+                  },
+                }}
+              />
+            </Box>
+
+            {errors.from_phone && (
+              <FormHelperText
+                sx={{
+                  color: "#d32f2f",
+                  fontSize: "12px",
+                  ml: "14px",
+                  mt: "4px",
+                }}
+              >
+                Please enter a valid phone number (8-15 digits)
+              </FormHelperText>
+            )}
           </Box>
 
           {/* Email */}
@@ -299,7 +405,6 @@ const ContactSection: React.FC = () => {
               sx={textFieldStyles}
             />
           </Box>
-
           {/* Main service Dropdown */}
           <Box sx={{ width: "100%" }}>
             <TextField
@@ -325,7 +430,6 @@ const ContactSection: React.FC = () => {
               ))}
             </TextField>
           </Box>
-
           {/* Sub services Dropdown */}
           <Box sx={{ width: "100%" }}>
             <TextField
@@ -350,7 +454,6 @@ const ContactSection: React.FC = () => {
               ))}
             </TextField>
           </Box>
-
           {/* Message */}
           <Box sx={{ width: "100%" }}>
             <TextField
@@ -359,13 +462,10 @@ const ContactSection: React.FC = () => {
               multiline
               rows={6}
               fullWidth
-              error={errors.message}
-              helperText={errors.message ? "Message is required." : ""}
               onChange={handleInputChange}
               sx={textFieldStyles}
             />
           </Box>
-
           {/* Submit Button */}
           <button
             type="submit"
