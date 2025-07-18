@@ -1,4 +1,4 @@
-import { GoArrowUpRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 // bg images
 import sc1 from "../../assets/marketing/sc1.png";
@@ -8,9 +8,8 @@ import sc4 from "../../assets/marketing/sc4.png";
 import sc5 from "../../assets/marketing/sc5.png";
 import sc6 from "../../assets/marketing/sc6.png";
 
+import { GoArrowUpRight } from "react-icons/go";
 import { motion } from "framer-motion";
-
-import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -60,6 +59,21 @@ const services = [
 const Service: React.FC = () => {
   const navigate = useNavigate();
 
+  const handleCardClick = (e: React.MouseEvent, path: string) => {
+    // Check if we're on mobile/tablet (you can adjust the breakpoint)
+    const isMobileOrTablet = window.innerWidth <= 1024;
+
+    // Check if the click was on a button or link
+    const isButtonClick =
+      (e.target as HTMLElement).tagName === "BUTTON" ||
+      (e.target as HTMLElement).closest("button");
+
+    // Only navigate if on mobile/tablet and not clicking a button
+    if (isMobileOrTablet && !isButtonClick) {
+      navigate(path);
+    }
+  };
+
   return (
     <div className="w-11/12 md:w-5/6 mx-auto py-4">
       {/* sec heading */}
@@ -95,8 +109,8 @@ const Service: React.FC = () => {
       >
         {services.map((service, index) => (
           <div
-            key={index}
-            className="relative rounded-[20px] overflow-hidden group shadow-lg"
+            className="relative rounded-[20px] overflow-hidden group shadow-lg cursor-pointer lg:cursor-default"
+            onClick={(e) => handleCardClick(e, service.path)}
           >
             {/* Bg image */}
             <img
