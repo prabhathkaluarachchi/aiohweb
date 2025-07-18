@@ -388,7 +388,8 @@ const RecentWork: React.FC = () => {
           {visibleProjects.map((project, index) => (
             <div
               key={index}
-              className="relative bg-white hover:bg-[#01213A] text-secondary hover:text-white rounded-xl shadow-sm hover:shadow-md transition-transform group hover:scale-[1.015] flex flex-col justify-between h-full"
+              onClick={() => setPopupData(project)}
+              className="relative bg-white hover:bg-[#01213A] text-secondary hover:text-white rounded-xl shadow-sm hover:shadow-md transition-transform group hover:scale-[1.015] flex flex-col justify-between h-full cursor-pointer"
             >
               {/* Card Top Content */}
               <div className="items-start p-4 pt-4 sm:pt-6">
@@ -396,10 +397,7 @@ const RecentWork: React.FC = () => {
                   <h3 className="font-medium text-sm md:text-lg w-3/4 sm:max-w-4/5">
                     {project.title}
                   </h3>
-                  <button
-                    onClick={() => setPopupData(project)}
-                    className="bg-primary text-secondary w-8 h-8 md:w-9 md:h-9 ml-2 md:ml-1 flex items-center justify-center rounded-full group-hover:scale-110 transition cursor-pointer"
-                  >
+                  <button className="bg-primary text-secondary w-8 h-8 md:w-9 md:h-9 ml-2 md:ml-1 flex items-center justify-center rounded-full group-hover:scale-110 transition cursor-pointer">
                     <GoArrowUpRight className="text-sm md:text-lg" />
                   </button>
                 </div>
