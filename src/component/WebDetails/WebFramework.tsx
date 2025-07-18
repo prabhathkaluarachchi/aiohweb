@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 /* -------------------------------- data -------------------------------- */
 const steps = [
@@ -42,20 +43,38 @@ const steps = [
 
 /* -------------------------------- desktop row -------------------------------- */
 type Step = { number: string; title: string; description: string };
-type StepItemProps = { step: Step; index: number };
+type StepItemProps = {
+  step: Step;
+  index: number;
+  hoveredIndex: number;
+  setHoveredIndex: (index: number) => void;
+};
 
-const StepItem: React.FC<StepItemProps> = ({ step, index }) => {
+const StepItem: React.FC<StepItemProps> = ({
+  step,
+  index,
+  hoveredIndex,
+  setHoveredIndex,
+}) => {
   const isLeft = index % 2 === 0;
+  const isHovered = hoveredIndex === index;
 
   return (
     <div className="relative w-full flex items-center group h-[14%] min-h-[80px]">
       {/* content box */}
       <div
-        className={`w-[46%] transition-all duration-300 text-left relative z-10 p-2.5 ${
-          isLeft
-            ? "pr-8 justify-start hover:bg-gradient-to-r from-[#02EC9770] to-transparent rounded-l-[20px]"
-            : "pl-8 justify-start hover:bg-gradient-to-l from-[#02EC9770] to-transparent rounded-r-[20px] ml-auto"
-        }`}
+        onMouseEnter={() => setHoveredIndex(index)}
+        onMouseLeave={() => setHoveredIndex(0)}
+        className={`w-[44%] transition-all duration-300 text-left relative z-10 p-2.5
+  ${
+    isLeft
+      ? `pr-8 justify-start rounded-l-[20px] ${
+          isHovered ? "bg-gradient-to-r from-[#02EC9770] to-transparent" : ""
+        }`
+      : `pl-8 justify-start rounded-r-[20px] ml-auto ${
+          isHovered ? "bg-gradient-to-l from-[#02EC9770] to-transparent" : ""
+        }`
+  }`}
       >
         <h3 className="text-[18px] xl:text-[24px] font-medium text-white">
           <span className="text-white mr-2 text-[28px] xl:text-[32px] font-medium">
@@ -69,14 +88,23 @@ const StepItem: React.FC<StepItemProps> = ({ step, index }) => {
       </div>
 
       {/* dot */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
         <div className="relative">
           <div className="absolute inset-0 rounded-full border-[3px] border-white/20 -m-[3px]" />
-          <div className="w-[20px] h-[20px] rounded-full border-[6px] border-[#078BD6] bg-[#078BD6] group-hover:bg-[#02EC97] group-hover:border-[#02EC97] transition-all duration-300" />
           <div
-            className={`absolute top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity ${
-              isLeft ? "-left-5 rotate-180" : "-right-5"
-            }`}
+            className={`w-[20px] h-[20px] rounded-full border-[6px] transition-all duration-300
+              ${
+                isHovered
+                  ? "border-[#02EC97] bg-[#02EC97]"
+                  : "border-[#078BD6] bg-[#078BD6]"
+              }
+            `}
+          />
+          {/* arrow */}
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 transition-opacity duration-300 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            } ${isLeft ? "-left-5 rotate-180" : "-right-5"}`}
           >
             <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[10px] border-l-[#02EC97]" />
           </div>
@@ -92,6 +120,7 @@ const WebFramework: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const autoRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState(0);
 
   /* ---------- observe which card is centered (active dot) ---------- */
   // For observer
@@ -155,22 +184,45 @@ const WebFramework: React.FC = () => {
   return (
     <>
       {/* ---------- DESKTOP TIMELINE ---------- */}
-      <div className="hidden lg:flex w-full h-[90vh] min-h-[700px] max-h-[900px] flex-col pt-10 pb-30 relative">
+      <div className="hidden lg:flex w-full h-[90vh] min-h-[700px] max-h-[900px] flex-col pt-6 pb-30 relative">
         {/* ---------- Middle vertical line ---------- */}
-        <div className="absolute left-1/2 top-[220px] bottom-[70px] w-[2px] -translate-x-1/2 bg-white/80 z-0" />
-        <div>
+        <motion.div
+          className="absolute left-1/2 top-[220px] bottom-[80px] w-[2px] -translate-x-1/2 bg-white/80 z-0"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <h2 className="text-center text-[26px] lg:text-[48px] font-bold text-white">
             The Way We Build
           </h2>
           <p className="text-center text-[16px] lg:text-[18px] text-white mt-0 font-light mb-12">
             How We Design, Develop, and Deliver Impactful Digital Products
           </p>
-        </div>
-        <div className="flex flex-col gap-0 relative h-full w-full max-w-full mx-auto">
+        </motion.div>
+        <motion.div
+          className="flex flex-col gap-0 relative h-full w-full max-w-full mx-auto"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8 }}
+        >
           {steps.map((s, i) => (
-            <StepItem key={i} step={s} index={i} />
+            <StepItem
+              key={i}
+              step={s}
+              index={i}
+              hoveredIndex={hoveredIndex}
+              setHoveredIndex={setHoveredIndex}
+            />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* ---------- MOBILE ONLY VERTICAL SCROLL ---------- */}
@@ -186,7 +238,7 @@ const WebFramework: React.FC = () => {
           {/* Vertical Scroll Container */}
           <div
             ref={scrollRef}
-            className="h-[420px] overflow-y-auto snap-y snap-mandatory space-y-6 pr-3 scroll-hide"
+            className="h-[600px] md:h-[650px] overflow-y-auto snap-y snap-mandatory space-y-6 pr-3 scroll-hide"
           >
             {steps.map((s) => (
               <div

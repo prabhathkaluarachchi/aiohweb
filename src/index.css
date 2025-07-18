@@ -18,3 +18,24 @@ html, body, #root {
   scrollbar-width: none; /* Firefox */
 }
 
+
+
+/* .group-left:hover ~ .absolute .group-left-hover {
+  background-color: #02EC97;
+  border-color: #02EC97;
+}
+
+.group-left:hover ~ .absolute .group-left-hover-arrow {
+  opacity: 1;
+}
+
+.group-right:hover ~ .absolute .group-right-hover {
+  background-color: #02EC97;
+  border-color: #02EC97;
+}
+
+.group-right:hover ~ .absolute .group-right-hover-arrow {
+  opacity: 1;
+} */
+
+
