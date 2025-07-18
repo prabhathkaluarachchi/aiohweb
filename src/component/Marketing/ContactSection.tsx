@@ -291,7 +291,7 @@ const ContactSection: React.FC = () => {
               }}
             >
               {/* Country Code Selector */}
-              <TextField
+              {/* <TextField
                 select
                 name="country_code"
                 value={phone.countryCode}
@@ -340,6 +340,98 @@ const ContactSection: React.FC = () => {
                           (country.idd.suffixes[0] || "")}
                       </Box>
                       <Box sx={{ ml: 2, opacity: 0.7 }}>
+                        {country.name.common}
+                      </Box>
+                    </Box>
+                  </MenuItem>
+                ))}
+              </TextField> */}
+              <TextField
+                select
+                name="country_code"
+                value={phone.countryCode}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setPhone((prev) => ({
+                    ...prev,
+                    countryCode: e.target.value,
+                  }));
+                  setErrors((prev) => ({
+                    ...prev,
+                    from_phone: !isValidPhone(
+                      `+${e.target.value}${phone.number}`
+                    ),
+                  }));
+                }}
+                sx={textFieldStyles} // Keep original textFieldStyles
+                SelectProps={{
+                  MenuProps: {
+                    PaperProps: {
+                      sx: {
+                        maxHeight: 300, // Limit dropdown height
+                        marginTop: 0.5, // Small gap from the input field
+                        marginLeft: "3.75%", // Align with the input field
+                        width: "350px", // Fixed width for dropdown
+                        // Shadow and border styling
+                        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                        border: "1px solid #e0e0e0",
+                        borderRadius: "12px",
+                        // Positioning
+                        transform: "translateY(8px) !important", // Ensure it appears right below
+                      },
+                    },
+                  },
+                  renderValue: (value: unknown) => (
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      {
+                        countries.find(
+                          (country) =>
+                            country.idd.root.replace("+", "") +
+                              (country.idd.suffixes[0] || "") ===
+                            value
+                        )?.flag
+                      }
+                      <Box sx={{ ml: 1 }}>+{value as string}</Box>
+                    </Box>
+                  ),
+                }}
+              >
+                {countries.map((country: any) => (
+                  <MenuItem
+                    key={country.cca2}
+                    value={
+                      country.idd.root.replace("+", "") +
+                      (country.idd.suffixes[0] || "")
+                    }
+                    sx={{
+                      padding: "8px 16px", // Compact padding
+                      "&:hover": {
+                        backgroundColor: "#f5f5f5", // Hover effect
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        width: "100%",
+                      }}
+                    >
+                      <Box sx={{ mr: 1, minWidth: "24px" }}>{country.flag}</Box>
+                      <Box sx={{ minWidth: "60px" }}>
+                        +
+                        {country.idd.root.replace("+", "") +
+                          (country.idd.suffixes[0] || "")}
+                      </Box>
+                      <Box
+                        sx={{
+                          ml: 2,
+                          opacity: 0.7,
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          maxWidth: "200px",
+                        }}
+                      >
                         {country.name.common}
                       </Box>
                     </Box>
