@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { GoArrowUpRight } from "react-icons/go";
+import { IoClose } from "react-icons/io5";
+import { LuCircleChevronRight } from "react-icons/lu";
 
 import rw1 from "../../assets/recentWork/rw1.png";
 import rw6 from "../../assets/recentWork/rw6.png";
@@ -12,8 +14,6 @@ import rw10 from "../../assets/recentWork/rw10.png";
 import rw11 from "../../assets/recentWork/rw11.png";
 import rw12 from "../../assets/recentWork/rw12.png";
 import rw13 from "../../assets/recentWork/rw13.png";
-import { IoClose } from "react-icons/io5";
-import { LuCircleChevronRight } from "react-icons/lu";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -295,7 +295,7 @@ const WebRecentWork: React.FC = () => {
   // Calculate pagination based on screen size
   let itemsPerPage = 8;
   if (screen === "mobile") itemsPerPage = 4;
-  else if (screen === "tablet") itemsPerPage = 9;
+  else if (screen === "tablet") itemsPerPage = 6;
 
   const totalPages = Math.ceil(projects.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -394,7 +394,10 @@ const WebRecentWork: React.FC = () => {
                 </p>
               </div>
 
-              <div className="relative flex items-center justify-center md:mt-4 scale-100 group-hover:scale-105 transition-transform duration-300 ease-out">
+              <div
+                className="relative flex items-center justify-center md:mt-4 scale-100 group-hover:scale-105 transition-transform duration-300 ease-out cursor-pointer"
+                onClick={() => setPopupData(project)}
+              >
                 {/* SHAPE back - hover */}
                 <div className="hidden group-hover:block absolute -top-3 sm:-top-4.5 w-4/5 h-16 bg-white rounded-[10px] opacity-60 z-0" />
 
@@ -486,10 +489,15 @@ const WebRecentWork: React.FC = () => {
                     className="w-full h-full object-fill object-top"
                     // className="w-full h-auto object-cover object-top"
                   />
-                  <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-4 bg-gradient-to-t from-white/20 to-transparent backdrop-blur-md rounded-b-[20px] z-0">
-                    <button className="flex items-center justify-center gap-1 w-fit px-6 py-3 bg-primary hover:bg-primary/80 text-base rounded-full cursor-pointer">
-                      <span className="leading-none">Explore</span>
-                      <GoArrowUpRight className="text-base leading-none" />
+                  <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-2 md:p-4 bg-white/20 backdrop-blur-md rounded-b-[20px] z-0">
+                    <button className="text-secondary flex items-center justify-center gap-1 w-fit px-6 py-2 bg-primary hover:bg-primary/80 rounded-full cursor-pointer">
+                      <span className="mb-1 text-sm md:text-base font-medium">
+                        Explore
+                      </span>
+                      <GoArrowUpRight
+                        style={{ strokeWidth: 1 }}
+                        className="text-sm md:text-base"
+                      />
                     </button>
                   </div>
                 </div>

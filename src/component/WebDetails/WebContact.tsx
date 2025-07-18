@@ -14,6 +14,29 @@ import AIOHImage from "../../assets/contact/aiohlogo.png";
 
 import MotionSection from "../common/MotionSection";
 
+const commonTextFieldSx = {
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "20px",
+    fontSize: "16px",
+    fontWeight: 300,
+    px: 2,
+  },
+  "& .MuiOutlinedInput-notchedOutline": {
+    borderColor: "rgba(0,0,0,0.45)",
+  },
+  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: "#000",
+  },
+  "& .MuiInputLabel-root": {
+    fontSize: "16px",
+    fontWeight: 300,
+    color: "gray",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "#000",
+  },
+};
+
 const WebContact: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
 
@@ -40,7 +63,6 @@ const WebContact: React.FC = () => {
     from_name: false,
     from_phone: false,
     from_email: false,
-    message: false,
     services: false,
   });
 
@@ -65,13 +87,11 @@ const WebContact: React.FC = () => {
     const name = formData.get("from_name")?.toString().trim();
     const phone = formData.get("from_phone")?.toString().trim();
     const email = formData.get("from_email")?.toString().trim();
-    const message = formData.get("message")?.toString().trim();
 
     const newErrors = {
       from_name: !name,
       from_phone: !phone,
       from_email: !email || !isValidEmail(email),
-      message: !message,
       services: selectedServices.length === 0,
     };
 
@@ -113,7 +133,6 @@ const WebContact: React.FC = () => {
             from_name: false,
             from_phone: false,
             from_email: false,
-            message: false,
             services: false,
           });
         },
@@ -164,29 +183,7 @@ const WebContact: React.FC = () => {
                 error={errors.from_name}
                 helperText={errors.from_name ? "Name is required." : ""}
                 onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={commonTextFieldSx}
               />
             </Box>
 
@@ -197,38 +194,20 @@ const WebContact: React.FC = () => {
                 variant="outlined"
                 fullWidth
                 error={errors.from_phone}
-                helperText={errors.from_phone ? "Phone is required." : ""}
+                helperText={
+                  errors.from_phone
+                    ? "Please enter a valid contact number. Digits up to 15 digits"
+                    : "e.g. 07xxxxxxxx or up to 15 digits"
+                }
                 onChange={(e) => {
                   const value = e.target.value.replace(/\D/g, ""); // Remove non-digits
-                  if (value.length <= 10) {
+                  if (value.length <= 15) {
                     e.target.value = value;
                     handleInputChange(e);
                   }
                 }}
-                inputProps={{ maxLength: 10 }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                inputProps={{ maxLength: 15 }}
+                sx={commonTextFieldSx}
               />
             </Box>
 
@@ -243,29 +222,7 @@ const WebContact: React.FC = () => {
                   errors.from_email ? "Please enter a valid email address." : ""
                 }
                 onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={commonTextFieldSx}
               />
             </Box>
 
@@ -285,29 +242,7 @@ const WebContact: React.FC = () => {
                 }
                 variant="outlined"
                 InputProps={{ readOnly: true }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={commonTextFieldSx}
               />
 
               <div className="flex flex-wrap gap-2 mt-2">
@@ -335,32 +270,8 @@ const WebContact: React.FC = () => {
                 rows={6}
                 variant="outlined"
                 fullWidth
-                error={errors.message}
-                helperText={errors.message ? "Message is required." : ""}
                 onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={commonTextFieldSx}
               />
             </Box>
 
