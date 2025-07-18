@@ -4,8 +4,8 @@ import Process from "../component/marketing/Process";
 import RecentWork from "../component/marketing/RecentWork";
 import Contact from "../component/marketing/ContactSection";
 
-import nav from "../assets/marketing/Navbar.png";
-import footer from "../assets/marketing/Footer.png";
+import nav from "../assets/img/Navbar.png";
+import footer from "../assets/img/Footer.png";
 
 import { useEffect } from "react";
 

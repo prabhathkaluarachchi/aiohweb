@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroVM from "../../assets/marketing/heroM.mp4";
+import heroVM from "../../assets/video/heroM.mp4";
 
 const Hero: React.FC = () => {
   return (

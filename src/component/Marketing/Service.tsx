@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 // bg images
-import sc1 from "../../assets/marketing/sc1.png";
-import sc2 from "../../assets/marketing/sc2.png";
-import sc3 from "../../assets/marketing/sc3.png";
-import sc4 from "../../assets/marketing/sc4.png";
-import sc5 from "../../assets/marketing/sc5.png";
-import sc6 from "../../assets/marketing/sc6.png";
+import sc1 from "../../assets/img/services/mkt-sc1.png";
+import sc2 from "../../assets/img/services/mkt-sc2.png";
+import sc3 from "../../assets/img/services/mkt-sc3.png";
+import sc4 from "../../assets/img/services/mkt-sc4.png";
+import sc5 from "../../assets/img/services/mkt-sc5.png";
+import sc6 from "../../assets/img/services/mkt-sc6.png";
 
 import { GoArrowUpRight } from "react-icons/go";
 import { motion } from "framer-motion";

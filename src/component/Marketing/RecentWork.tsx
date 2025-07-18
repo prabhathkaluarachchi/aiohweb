@@ -7,14 +7,14 @@ import { LuCircleChevronRight } from "react-icons/lu";
 import { LiaHandPointRightSolid } from "react-icons/lia";
 import { ImCheckmark2 } from "react-icons/im";
 
-import rw1 from "../../assets/recentWork/rw1.png";
-import rw2 from "../../assets/recentWork/rw2.png";
-import rw3 from "../../assets/recentWork/rw3.png";
-import rw4 from "../../assets/recentWork/rw4.png";
-import rw5 from "../../assets/recentWork/rw5.png";
-import rw6 from "../../assets/recentWork/rw6.png";
-import rw7 from "../../assets/recentWork/rw7.png";
-import rw8 from "../../assets/recentWork/rw8.png";
+import mkt_rw1 from "../../assets/img/recentWork/mkt-rw1.png";
+import mkt_rw2 from "../../assets/img/recentWork/mkt-rw2.png";
+import mkt_rw3 from "../../assets/img/recentWork/mkt-rw3.png";
+import mkt_rw4 from "../../assets/img/recentWork/mkt-rw4.png";
+import mkt_rw5 from "../../assets/img/recentWork/mkt-rw5.png";
+import mkt_rw6 from "../../assets/img/recentWork/mkt-rw6.png";
+import mkt_rw7 from "../../assets/img/recentWork/mkt-rw7.png";
+import mkt_rw8 from "../../assets/img/recentWork/mkt-rw8.png";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -24,7 +24,7 @@ const projects = [
     title: "Aluvihare Website",
     description:
       "A Sacred Buddhist Temple located in Aluvihare. Matale, District.",
-    image: rw1,
+    image: mkt_rw1,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -45,7 +45,7 @@ const projects = [
   {
     title: "Regency Travel House",
     description: "Custom travel packages designed to your accommodations.",
-    image: rw2,
+    image: mkt_rw2,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -67,7 +67,7 @@ const projects = [
     title: "Winchester Global",
     description:
       "Winchester Global is a dental implant center that prioritizes patient satisfaction.",
-    image: rw3,
+    image: mkt_rw3,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -89,7 +89,7 @@ const projects = [
     title: "Kandy Rent Cars",
     description:
       "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: rw4,
+    image: mkt_rw4,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -111,7 +111,7 @@ const projects = [
     title: "HARRISONS",
     description:
       "HARRISONS offers timeless elegance and style in their men’s collection.",
-    image: rw5,
+    image: mkt_rw5,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -133,7 +133,7 @@ const projects = [
     title: "Kandy Rent Cars",
     description:
       "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: rw6,
+    image: mkt_rw6,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -154,7 +154,7 @@ const projects = [
   {
     title: "Regency Travel House",
     description: "Custom travel packages designed to your accommodations.",
-    image: rw7,
+    image: mkt_rw7,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -176,7 +176,7 @@ const projects = [
     title: "HARRISONS",
     description:
       "HARRISONS offers timeless elegance and style in their men’s collection.",
-    image: rw8,
+    image: mkt_rw8,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -198,7 +198,7 @@ const projects = [
     title: "Kandy Rent Cars",
     description:
       "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: rw6,
+    image: mkt_rw6,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",

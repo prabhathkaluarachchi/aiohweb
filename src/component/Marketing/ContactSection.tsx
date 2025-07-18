@@ -7,12 +7,12 @@ import { TextField, MenuItem, Box, FormHelperText } from "@mui/material";
 import countries from "world-countries";
 import { motion } from "framer-motion";
 
-import FacebookIcon from "../../assets/contact/facebook.svg";
-import InstagramIcon from "../../assets/contact/instagram.svg";
-import GoogleIcon from "../../assets/contact/google.svg";
-import LinkIcon from "../../assets/contact/linkedin.svg";
-import XIcon from "../../assets/contact/x.svg";
-import AIOHImage from "../../assets/contact/aiohlogo.png";
+import FacebookIcon from "../../assets/img/facebook.svg";
+import InstagramIcon from "../../assets/img/instagram.svg";
+import GoogleIcon from "../../assets/img/google.svg";
+import LinkIcon from "../../assets/img/linkedin.svg";
+import XIcon from "../../assets/img/x.svg";
+import AIOHImage from "../../assets/img/logo/aiohlogo.png";
 
 const ContactSection: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -53,7 +53,6 @@ const ContactSection: React.FC = () => {
     from_email: false,
     main_service: false,
     sub_service: false,
-    message: false,
   });
 
   const handleInputChange = (
@@ -90,7 +89,6 @@ const ContactSection: React.FC = () => {
     const email = formData.get("from_email")?.toString().trim();
     const service = formData.get("main_service")?.toString().trim();
     const subService = formData.get("sub_service")?.toString().trim();
-    const message = formData.get("message")?.toString().trim();
 
     // Combine phone number with country code
     const fullPhoneNumber = `+${phone.countryCode}${phone.number}`;
@@ -101,7 +99,6 @@ const ContactSection: React.FC = () => {
       from_email: !email || !isValidEmail(email),
       main_service: !service,
       sub_service: !subService,
-      message: !message,
     };
 
     setErrors(newErrors);
@@ -144,11 +141,11 @@ const ContactSection: React.FC = () => {
           });
           form.current?.reset();
           setSelectedSubService("");
+          setPhone({ countryCode: "94", number: "" });
           setErrors({
             from_name: false,
             from_phone: false,
             from_email: false,
-            message: false,
             main_service: false,
             sub_service: false,
           });
