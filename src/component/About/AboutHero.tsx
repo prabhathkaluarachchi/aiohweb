@@ -98,7 +98,7 @@ const AboutHero: React.FC = () => {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="hidden lg:block w-full lg:w-1/2 relative h-[550px] translate-x-16 bg-amber-600"
+        className="hidden lg:block w-full lg:w-1/2 relative h-[580px] translate-x-16"
       >
         {/* Shifted Inner Wrapper */}
         <div className="relative w-full h-full ">
@@ -119,7 +119,7 @@ const AboutHero: React.FC = () => {
             />
           </div>
           {/* Image3 - Right Middle */}
-          <div className="absolute top-[40%] right-[5%] w-[40%] rounded-lg overflow-hidden z-10 -translate-y-1/2">
+          <div className="absolute top-[36%] right-[5%] w-[40%] rounded-lg overflow-hidden z-10 -translate-y-1/2">
             <img
               src={Image3}
               alt="Tall Team"
@@ -134,7 +134,7 @@ const AboutHero: React.FC = () => {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="lg:hidden w-full flex flex-col items-center gap-0 mt-8 "
+        className="lg:hidden w-full flex flex-col items-center gap-0 mt-10 "
       >
         {/* Images Row */}
         <div className="w-full flex justify-between gap-4">
