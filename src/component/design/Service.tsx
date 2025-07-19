@@ -1,54 +1,54 @@
 import { useNavigate } from "react-router-dom";
 
 // bg images
-import sc1 from "../../assets/img/services/mkt-sc1.png";
-import sc2 from "../../assets/img/services/mkt-sc2.png";
-import sc3 from "../../assets/img/services/mkt-sc3.png";
-import sc4 from "../../assets/img/services/mkt-sc4.png";
-import sc5 from "../../assets/img/services/mkt-sc5.png";
-import sc6 from "../../assets/img/services/mkt-sc6.png";
+import sc1 from "../../assets/img/services/des-sc1.png";
+import sc2 from "../../assets/img/services/des-sc2.png";
+import sc3 from "../../assets/img/services/des-sc3.png";
+import sc4 from "../../assets/img/services/des-sc4.png";
+import sc5 from "../../assets/img/services/des-sc5.png";
+import sc6 from "../../assets/img/services/des-sc6.png";
 
 import { GoArrowUpRight } from "react-icons/go";
 import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Brand Strategy",
+    title: "Video and advertising",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc1,
     path: "/marketing/brand-strategy",
   },
   {
-    title: "Social Media Management",
+    title: "Brand  identity development",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc2,
     path: "/marketing/social-media-management",
   },
   {
-    title: "SEO Audit and Setup",
+    title: "Package design",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc3,
     path: "/marketing/seo-audit-and-setup",
   },
   {
-    title: "Digital Marketing Consulting",
+    title: "Creative content",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc4,
     path: "/marketing/digital-marketing-consulting",
   },
   {
-    title: "Social Media Advertising",
+    title: "Design solutions",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc5,
     path: "/marketing/social-media-advertising",
   },
   {
-    title: "Brand Strategy Sample",
+    title: "UI/UX solutions",
     description:
       "We manage your social media to grow your audience, boost engagement, and strengthen your brand presence online.",
     img: sc6,

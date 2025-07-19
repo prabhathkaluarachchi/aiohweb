@@ -23,6 +23,18 @@ function Homepage() {
           Marketing
         </button>
         <button
+          onClick={() => navigate("/Technology")}
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+        >
+          Technology
+        </button>
+        <button
+          onClick={() => navigate("/Design")}
+          className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 transition"
+        >
+          Design
+        </button>
+        <button
           onClick={() => navigate("/Webservice")}
           className="bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600 transition"
         >
@@ -46,14 +58,25 @@ function Homepage() {
             <span className="font-medium text-black">Contact</span> – Available
           </li>
           <li>
-            <span className="font-medium text-black">Marketing</span> – Available
+            <span className="font-medium text-black">Marketing</span> –
+            Available
           </li>
           <li>
-            <span className="font-medium text-black">Service Details</span> – Available
+            <span className="font-medium text-black">Technology</span> –
+            Available
+          </li>{" "}
+          <li>
+            <span className="font-medium text-black">Design</span> – Available
           </li>
           <li>
-            <span className="font-medium text-black">About Us</span> – 
-            <span className="text-red-500 ml-1">This page is under maintenance</span>
+            <span className="font-medium text-black">Service Details</span> –
+            Available
+          </li>
+          <li>
+            <span className="font-medium text-black">About Us</span> –
+            <span className="text-red-500 ml-1">
+              This page is under maintenance
+            </span>
           </li>
         </ul>
       </div>

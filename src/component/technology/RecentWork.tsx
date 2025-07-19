@@ -7,14 +7,17 @@ import { LuCircleChevronRight } from "react-icons/lu";
 import { LiaHandPointRightSolid } from "react-icons/lia";
 import { ImCheckmark2 } from "react-icons/im";
 
-import mkt_rw1 from "../../assets/img/recentWork/mkt-rw1.png";
-import mkt_rw2 from "../../assets/img/recentWork/mkt-rw2.png";
-import mkt_rw3 from "../../assets/img/recentWork/mkt-rw3.png";
-import mkt_rw4 from "../../assets/img/recentWork/mkt-rw4.png";
-import mkt_rw5 from "../../assets/img/recentWork/mkt-rw5.png";
-import mkt_rw6 from "../../assets/img/recentWork/mkt-rw6.png";
-import mkt_rw7 from "../../assets/img/recentWork/mkt-rw7.png";
-import mkt_rw8 from "../../assets/img/recentWork/mkt-rw8.png";
+import tech_rw1 from "../../assets/img/recentWork/tech-rw1.png";
+import tech_rw2 from "../../assets/img/recentWork/tech-rw2.png";
+import tech_rw3 from "../../assets/img/recentWork/tech-rw3.png";
+import tech_rw4 from "../../assets/img/recentWork/tech-rw4.png";
+import tech_rw5 from "../../assets/img/recentWork/tech-rw5.png";
+import tech_rw6 from "../../assets/img/recentWork/tech-rw6.png";
+import tech_rw7 from "../../assets/img/recentWork/tech-rw7.png";
+import tech_rw8 from "../../assets/img/recentWork/tech-rw8.png";
+import tech_rw9 from "../../assets/img/recentWork/tech-rw9.png";
+import tech_rw10 from "../../assets/img/recentWork/tech-rw10.png";
+import tech_rw11 from "../../assets/img/recentWork/tech-rw11.png";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -24,7 +27,7 @@ const projects = [
     title: "Aluvihare Website",
     description:
       "A Sacred Buddhist Temple located in Aluvihare. Matale, District.",
-    image: mkt_rw1,
+    image: tech_rw1,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -45,7 +48,73 @@ const projects = [
   {
     title: "Regency Travel House",
     description: "Custom travel packages designed to your accommodations.",
-    image: mkt_rw2,
+    image: tech_rw2,
+    link: "#",
+    description2:
+      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
+    challenges: [
+      "Simplifying a complicated design process",
+      "Giving consumers a seamless digital experience when designing their car",
+      "Real time experience of designing your car",
+      "A comprehensive back-end platform that allowed real time updates",
+    ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
+  },
+  {
+    title: "EIKONE Admissions",
+    description:
+      "Free counselling and application support for UK university admissions.",
+    image: tech_rw3,
+    link: "#",
+    description2:
+      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
+    challenges: [
+      "Simplifying a complicated design process",
+      "Giving consumers a seamless digital experience when designing their car",
+      "Real time experience of designing your car",
+      "A comprehensive back-end platform that allowed real time updates",
+    ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
+  },
+  {
+    title: "Kandy Rent Cars",
+    description:
+      "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
+    image: tech_rw4,
+    link: "#",
+    description2:
+      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
+    challenges: [
+      "Simplifying a complicated design process",
+      "Giving consumers a seamless digital experience when designing their car",
+      "Real time experience of designing your car",
+      "A comprehensive back-end platform that allowed real time updates",
+    ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
+  },
+  {
+    title: "HARRISONS",
+    description:
+      "HARRISONS offers timeless elegance and style in their men’s collection.",
+    image: tech_rw5,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -67,7 +136,7 @@ const projects = [
     title: "Winchester Global",
     description:
       "Winchester Global is a dental implant center that prioritizes patient satisfaction.",
-    image: mkt_rw3,
+    image: tech_rw6,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -86,10 +155,75 @@ const projects = [
     ],
   },
   {
-    title: "Kandy Rent Cars",
+    title: "Dinuda Resort",
     description:
-      "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: mkt_rw4,
+      "Dinuda Resort offers an unparalleled escape into tropical paradise.",
+    image: tech_rw7,
+    link: "#",
+    description2:
+      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
+    challenges: [
+      "Simplifying a complicated design process",
+      "Giving consumers a seamless digital experience when designing their car",
+      "Real time experience of designing your car",
+      "A comprehensive back-end platform that allowed real time updates",
+    ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
+  },
+  {
+    title: "Fly Limousines",
+    description: "Fly Limousines is a premier luxury transportation service.",
+    image: tech_rw8,
+    link: "#",
+    description2:
+      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
+    challenges: [
+      "Simplifying a complicated design process",
+      "Giving consumers a seamless digital experience when designing their car",
+      "Real time experience of designing your car",
+      "A comprehensive back-end platform that allowed real time updates",
+    ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
+  },
+  {
+    title: "NAFCO",
+    description:
+      "Prominent manufacturer of cellular cement blocks in Sri Lanka.",
+    image: tech_rw9,
+    link: "#",
+    description2:
+      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
+    challenges: [
+      "Simplifying a complicated design process",
+      "Giving consumers a seamless digital experience when designing their car",
+      "Real time experience of designing your car",
+      "A comprehensive back-end platform that allowed real time updates",
+    ],
+    solutions: [
+      "Produced a consistent experience across customization of Volvo Cars.",
+      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
+      "Real time changes that reflected the latest updates while browsing.",
+      "Created a new experience of car configuration.",
+      "Bespoke backend solution that integrates with user experience.",
+    ],
+  },
+  {
+    title: "Muswenna Tea",
+    description:
+      "Muswenna Tea Factory, where passion meets tradition in every cup.",
+    image: tech_rw10,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -111,94 +245,7 @@ const projects = [
     title: "HARRISONS",
     description:
       "HARRISONS offers timeless elegance and style in their men’s collection.",
-    image: mkt_rw5,
-    link: "#",
-    description2:
-      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
-    challenges: [
-      "Simplifying a complicated design process",
-      "Giving consumers a seamless digital experience when designing their car",
-      "Real time experience of designing your car",
-      "A comprehensive back-end platform that allowed real time updates",
-    ],
-    solutions: [
-      "Produced a consistent experience across customization of Volvo Cars.",
-      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
-      "Real time changes that reflected the latest updates while browsing.",
-      "Created a new experience of car configuration.",
-      "Bespoke backend solution that integrates with user experience.",
-    ],
-  },
-  {
-    title: "Kandy Rent Cars",
-    description:
-      "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: mkt_rw6,
-    link: "#",
-    description2:
-      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
-    challenges: [
-      "Simplifying a complicated design process",
-      "Giving consumers a seamless digital experience when designing their car",
-      "Real time experience of designing your car",
-      "A comprehensive back-end platform that allowed real time updates",
-    ],
-    solutions: [
-      "Produced a consistent experience across customization of Volvo Cars.",
-      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
-      "Real time changes that reflected the latest updates while browsing.",
-      "Created a new experience of car configuration.",
-      "Bespoke backend solution that integrates with user experience.",
-    ],
-  },
-  {
-    title: "Regency Travel House",
-    description: "Custom travel packages designed to your accommodations.",
-    image: mkt_rw7,
-    link: "#",
-    description2:
-      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
-    challenges: [
-      "Simplifying a complicated design process",
-      "Giving consumers a seamless digital experience when designing their car",
-      "Real time experience of designing your car",
-      "A comprehensive back-end platform that allowed real time updates",
-    ],
-    solutions: [
-      "Produced a consistent experience across customization of Volvo Cars.",
-      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
-      "Real time changes that reflected the latest updates while browsing.",
-      "Created a new experience of car configuration.",
-      "Bespoke backend solution that integrates with user experience.",
-    ],
-  },
-  {
-    title: "HARRISONS",
-    description:
-      "HARRISONS offers timeless elegance and style in their men’s collection.",
-    image: mkt_rw8,
-    link: "#",
-    description2:
-      "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
-    challenges: [
-      "Simplifying a complicated design process",
-      "Giving consumers a seamless digital experience when designing their car",
-      "Real time experience of designing your car",
-      "A comprehensive back-end platform that allowed real time updates",
-    ],
-    solutions: [
-      "Produced a consistent experience across customization of Volvo Cars.",
-      "A start to finish agile web application where you can build your Volvo Car from engine configuration, to colour, wheels, upholstery, and optional equipment.",
-      "Real time changes that reflected the latest updates while browsing.",
-      "Created a new experience of car configuration.",
-      "Bespoke backend solution that integrates with user experience.",
-    ],
-  },
-  {
-    title: "Kandy Rent Cars",
-    description:
-      "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: mkt_rw6,
+    image: tech_rw11,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -299,7 +346,7 @@ const RecentWork: React.FC = () => {
   // Calculate pagination based on screen size
   let itemsPerPage = 8;
   if (screen === "mobile") itemsPerPage = 4;
-  else if (screen === "tablet") itemsPerPage = 9;
+  else if (screen === "tablet") itemsPerPage = 6;
 
   const totalPages = Math.ceil(projects.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -369,8 +416,8 @@ const RecentWork: React.FC = () => {
       {/* card sec */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentPage}
           ref={cardSectionRef}
+          key={currentPage}
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}

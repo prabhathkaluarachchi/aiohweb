@@ -1,11 +1,11 @@
-import Hero from "../component/marketing/Hero";
-import Service from "../component/marketing/Service";
-import Process from "../component/marketing/Process";
-import RecentWork from "../component/marketing/RecentWork";
-import Contact from "../component/marketing/ContactSection";
+import Hero from "../component/technology/Hero";
+import Service from "../component/technology/Service";
+import Process from "../component/technology/Process";
+import RecentWork from "../component/technology/RecentWork";
+import Contact from "../component/technology/ContactSection";
 
-import nav from "../assets/marketing/Navbar.png";
-import footer from "../assets/marketing/Footer.png";
+import nav from "../assets/img/NavbarT.png";
+import footer from "../assets/img/Footer.png";
 
 import { useEffect } from "react";
 
