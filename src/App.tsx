@@ -4,6 +4,8 @@ import Contact from "./pages/Contact";
 import Marketing from "./pages/Marketing";
 import WebService from "./pages/WebService";
 import AboutUs from "./pages/AboutUs";
+import Technology from "./pages/Technology";
+import Design from "./pages/Design";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Marketing" element={<Marketing />} />
+        <Route path="/Technology" element={<Technology />} />
+        <Route path="/Design" element={<Design />} />
         <Route path="/Aboutus" element={<AboutUs />} />
 
         {/* Marketing Service Details Pages */}

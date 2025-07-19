@@ -288,61 +288,6 @@ const ContactSection: React.FC = () => {
               }}
             >
               {/* Country Code Selector */}
-              {/* <TextField
-                select
-                name="country_code"
-                value={phone.countryCode}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  setPhone((prev) => ({
-                    ...prev,
-                    countryCode: e.target.value,
-                  }));
-                  setErrors((prev) => ({
-                    ...prev,
-                    from_phone: !isValidPhone(
-                      `+${e.target.value}${phone.number}`
-                    ),
-                  }));
-                }}
-                sx={textFieldStyles}
-                SelectProps={{
-                  renderValue: (value: unknown) => (
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                      {
-                        countries.find(
-                          (country) =>
-                            country.idd.root.replace("+", "") +
-                              (country.idd.suffixes[0] || "") ===
-                            value
-                        )?.flag
-                      }
-                      <Box sx={{ ml: 1 }}>+{value as string}</Box>
-                    </Box>
-                  ),
-                }}
-              >
-                {countries.map((country: any) => (
-                  <MenuItem
-                    key={country.cca2}
-                    value={
-                      country.idd.root.replace("+", "") +
-                      (country.idd.suffixes[0] || "")
-                    }
-                  >
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                      <Box sx={{ mr: 1 }}>{country.flag}</Box>
-                      <Box>
-                        +
-                        {country.idd.root.replace("+", "") +
-                          (country.idd.suffixes[0] || "")}
-                      </Box>
-                      <Box sx={{ ml: 2, opacity: 0.7 }}>
-                        {country.name.common}
-                      </Box>
-                    </Box>
-                  </MenuItem>
-                ))}
-              </TextField> */}
               <TextField
                 select
                 name="country_code"
@@ -359,7 +304,7 @@ const ContactSection: React.FC = () => {
                     ),
                   }));
                 }}
-                sx={textFieldStyles} // Keep original textFieldStyles
+                sx={textFieldStyles}
                 SelectProps={{
                   MenuProps: {
                     PaperProps: {
@@ -651,7 +596,7 @@ const ContactSection: React.FC = () => {
               Follow Us:
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               {/* Facebook */}
               <a
                 href="https://www.facebook.com/allinoneholdings"

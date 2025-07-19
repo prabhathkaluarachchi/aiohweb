@@ -288,19 +288,12 @@ const RecentWork: React.FC = () => {
 
     // Skip scroll if auto-slide is active on mobile
     if (screen === "mobile") return;
-    // Check if section is in view
-    const rect = section.getBoundingClientRect();
-    const isInView =
-      rect.top >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight);
 
-    if (isInView) {
-      section.scrollIntoView({
-        // behavior: "smooth",
-        block: "start",
-      });
-    }
+    // Scroll to the top of the card section
+    window.scrollTo({
+      top: section.offsetTop - 20,
+      behavior: "smooth",
+    });
   }, [currentPage]);
 
   // Calculate pagination based on screen size
