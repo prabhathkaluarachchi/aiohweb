@@ -7,14 +7,14 @@ import { LuCircleChevronRight } from "react-icons/lu";
 import { LiaHandPointRightSolid } from "react-icons/lia";
 import { ImCheckmark2 } from "react-icons/im";
 
-import mkt_rw1 from "../../assets/img/recentWork/mkt-rw1.png";
-import mkt_rw2 from "../../assets/img/recentWork/mkt-rw2.png";
-import mkt_rw3 from "../../assets/img/recentWork/mkt-rw3.png";
-import mkt_rw4 from "../../assets/img/recentWork/mkt-rw4.png";
-import mkt_rw5 from "../../assets/img/recentWork/mkt-rw5.png";
-import mkt_rw6 from "../../assets/img/recentWork/mkt-rw6.png";
-import mkt_rw7 from "../../assets/img/recentWork/mkt-rw7.png";
-import mkt_rw8 from "../../assets/img/recentWork/mkt-rw8.png";
+import des_rw1 from "../../assets/img/recentWork/des-rw1.png";
+import des_rw2 from "../../assets/img/recentWork/des-rw2.png";
+import des_rw3 from "../../assets/img/recentWork/des-rw3.png";
+import des_rw4 from "../../assets/img/recentWork/des-rw4.png";
+import des_rw5 from "../../assets/img/recentWork/des-rw5.png";
+import des_rw6 from "../../assets/img/recentWork/des-rw6.png";
+import des_rw7 from "../../assets/img/recentWork/des-rw7.png";
+import des_rw8 from "../../assets/img/recentWork/des-rw8.png";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -24,7 +24,7 @@ const projects = [
     title: "Aluvihare Website",
     description:
       "A Sacred Buddhist Temple located in Aluvihare. Matale, District.",
-    image: mkt_rw1,
+    image: des_rw1,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -45,7 +45,7 @@ const projects = [
   {
     title: "Regency Travel House",
     description: "Custom travel packages designed to your accommodations.",
-    image: mkt_rw2,
+    image: des_rw2,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -67,7 +67,7 @@ const projects = [
     title: "Winchester Global",
     description:
       "Winchester Global is a dental implant center that prioritizes patient satisfaction.",
-    image: mkt_rw3,
+    image: des_rw3,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -89,7 +89,7 @@ const projects = [
     title: "Kandy Rent Cars",
     description:
       "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: mkt_rw4,
+    image: des_rw4,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -111,7 +111,7 @@ const projects = [
     title: "HARRISONS",
     description:
       "HARRISONS offers timeless elegance and style in their men’s collection.",
-    image: mkt_rw5,
+    image: des_rw5,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -133,7 +133,7 @@ const projects = [
     title: "Kandy Rent Cars",
     description:
       "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: mkt_rw6,
+    image: des_rw6,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -154,7 +154,7 @@ const projects = [
   {
     title: "Regency Travel House",
     description: "Custom travel packages designed to your accommodations.",
-    image: mkt_rw7,
+    image: des_rw7,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -176,7 +176,7 @@ const projects = [
     title: "HARRISONS",
     description:
       "HARRISONS offers timeless elegance and style in their men’s collection.",
-    image: mkt_rw8,
+    image: des_rw8,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -198,7 +198,7 @@ const projects = [
     title: "Kandy Rent Cars",
     description:
       "Kandy Rent Cars is your trusted car rental service in Kandy and beyond.",
-    image: mkt_rw6,
+    image: des_rw6,
     link: "#",
     description2:
       "This website was crafted to help travelers explore and book unforgettable experiences through Travel Regency House, your trusted gateway to world-class journeys. Built using React.js, Vite, and Tailwind CSS, the platform offers a fast, responsive, and user-friendly interface across all devices.",
@@ -299,7 +299,7 @@ const RecentWork: React.FC = () => {
   // Calculate pagination based on screen size
   let itemsPerPage = 8;
   if (screen === "mobile") itemsPerPage = 4;
-  else if (screen === "tablet") itemsPerPage = 9;
+  else if (screen === "tablet") itemsPerPage = 6;
 
   const totalPages = Math.ceil(projects.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;

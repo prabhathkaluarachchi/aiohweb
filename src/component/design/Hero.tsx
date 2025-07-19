@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroVM from "../../assets/video/heroM.mp4";
+import heroVM from "../../assets/video/heroD.mp4";
 
 const Hero: React.FC = () => {
   return (
@@ -18,8 +18,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-primary">Marketing</span> That Moves Brands
-            Forward
+            <span className="text-primary">Design</span> That Defines Experience
           </motion.h1>
 
           <motion.p
