@@ -9,7 +9,7 @@ const Map: React.FC = () => {
         <h2 className="text-[28px] md:text-[32px] lg:text-[52px] font-bold text-black ">
           Global Impact, Local Expertise
         </h2>
-        <p className="text-[16px] md:text-[18px] font-light text-black mt-2 max-w-3xl mx-auto">
+        <p className="text-[18px] md:text-[18px] font-light text-black mt-2 max-w-3xl mx-auto">
           Over the 10 years, we’ve proudly delivered successful projects for clients across multiple countries
         </p>
       </div>

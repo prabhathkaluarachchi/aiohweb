@@ -5,6 +5,8 @@ import AboutHero from "../component/About/AboutHero";
 import WhoAre from "../component/About/WhoAre";
 import Counter from "../component/About/Counter";
 import Map from "../component/About/Map";
+import WhatSets from "../component/About/WhatSets";
+import VoicesOfTrust from "../component/About/VoicesOfTrust";
 
 function WebService() {
   useEffect(() => {
@@ -29,30 +31,30 @@ function WebService() {
       </section>
 
       {/* Section 3 */}
-      <section className="bg-white lg:mb-30 mb-20 rounded-[20px]">
+      <section className="bg-white rounded-[20px] lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto">
           <Counter />
         </div>
       </section>
 
       {/* Section 4 */}
-      <section className="bg-transparent mt-30 lg:mb-30 mb-20">
+      <section className="bg-transparent lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto">
           <Map />
         </div>
       </section>
 
       {/* Section 5 */}
-      <section className="bg-orange-400 mt-30 rounded-[20px] lg:mb-30 mb-20">
-        <div className="w-11/12 mx-auto">
-          <h1 className="py-10">Section 5</h1>
+      <section className="rounded-[20px] lg:mb-30 mb-20">
+        <div className="mx-auto">
+        <WhatSets />
         </div>
       </section>
 
       {/* Section 6 */}
-      <section className="bg-amber-800 mt-30 rounded-[20px] lg:mb-30 mb-20">
+      <section className="bg-amber-800 rounded-[20px] lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto">
-          <h1 className="py-10">Section 6</h1>
+          <VoicesOfTrust />
         </div>
       </section>
     </div>
