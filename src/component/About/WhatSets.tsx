@@ -6,6 +6,9 @@ import {
   FaBullseye,
   FaAward,
 } from "react-icons/fa";
+
+import { motion } from "framer-motion";
+
 import AIOHLogo from "../../assets/about/AIOH.png";
 
 const cards = [
@@ -106,18 +109,29 @@ const WhatSets: React.FC = () => {
   return (
     <div className="w-full py-0">
       {/* Heading */}
-      <div className="text-center mb-4 px-4">
-        <h2 className="text-[28px] md:text-[32px] lg:text-[48px] font-medium text-black">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-center mb-10 px-4"
+      >
+        <h2 className="text-[28px] md:text-[48px] lg:text-[52px] font-bold text-black">
           What Sets Us Apart
         </h2>
         <p className="text-[18px] font-light text-black mt-2 max-w-3xl mx-auto">
           Our core values aren’t just words — they’re the foundation of
           everything we do.
         </p>
-      </div>
+      </motion.div>
 
       {/* MOBILE ONLY */}
-      <div className="lg:hidden bg-gradient-to-b from-black to-[#00376E] rounded-[20px] px-4 pt-8 pb-14 relative overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      className="lg:hidden bg-gradient-to-b from-black to-[#00376E] rounded-[20px] px-4 pt-8 pb-14 relative overflow-hidden">
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <img src={AIOHLogo} alt="AIOH Logo" className="w-36 object-contain" />
@@ -157,10 +171,16 @@ const WhatSets: React.FC = () => {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* DESKTOP GRID */}
-      <div className="hidden lg:block bg-gradient-to-b from-black to-[#00376E] rounded-[20px] py-12 px-6">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="hidden lg:block bg-gradient-to-b from-black to-[#00376E] rounded-[20px] py-12 px-6"
+      >
         <div className="grid grid-cols-3 gap-9 w-11/12 mx-auto">
           {/* Top Row */}
           <div className="bg-white/20 rounded-[20px] p-6 flex flex-col gap-2 text-white font-roboto">
@@ -234,7 +254,7 @@ const WhatSets: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

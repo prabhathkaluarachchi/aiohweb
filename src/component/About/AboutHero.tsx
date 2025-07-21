@@ -23,7 +23,7 @@ const AboutHero: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-[28px] md:text-[32px] lg:text-[52px] lg:leading-[80px] font-bold text-[#191818] text-center lg:text-left"
+          className="text-[32px] md:text-[48px] lg:text-[52px] lg:leading-[80px] font-bold text-[#191818] text-center lg:text-left"
         >
           Driven by Innovation,
           <br /> Defined by <span className="text-[#02ec97]">Passion</span>
@@ -33,7 +33,7 @@ const AboutHero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-[16px] lg:text-[20px] leading-7 lg:leading-8 text-[#191818] mt-6 font-light text-justify"
+          className="text-[18px] lg:text-[20px] leading-7 lg:leading-8 text-[#191818] mt-6 font-light text-justify"
         >
           We deliver forward-thinking solutions across marketing, technology,      
           and design. By combining strategic insight with creative execution, we

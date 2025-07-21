@@ -1,13 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import ArrowIcon from "../../assets/about/arrow.svg";
 
 const WhoAre: React.FC = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-6 p-0 lg:p-0">
       {/* Left Box */}
-      <div className="relative flex-1 rounded-[20px] bg-gradient-to-r from-[#010A12] to-[#074378]  p-8 flex flex-col justify-center items-center text-center min-h-[500px]">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative flex-1 rounded-[20px] bg-gradient-to-r from-[#010A12] to-[#074378]  p-8 flex flex-col justify-center items-center text-center min-h-[500px]"
+      >
         {/* Top-right circular button */}
         <Link to="/contact">
           <button className="absolute top-6 right-10 w-12 h-12 rounded-full bg-white/20 hover:bg-white/50 flex items-center justify-center shadow-md transition cursor-pointer">
@@ -21,7 +29,9 @@ const WhoAre: React.FC = () => {
 
         {/* Center Content */}
         <div className="text-white ">
-          <h1 className="text-[48px] font-medium mb-3">Who Are We</h1>
+          <h1 className="text-[32px] md:text-[48px] lg:text-[52px] font-medium mb-3">
+            Who Are We
+          </h1>
           <p className="text-[18px] font-light mb-6">
             Creative Thinkers. Technical Experts. Strategic Partners.
           </p>
@@ -32,12 +42,19 @@ const WhoAre: React.FC = () => {
             of all sizes navigate the digital landscape with clarity and impact.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Box */}
-      <div className="flex-1 rounded-[20px] bg-white p-8 flex flex-col justify-center items-center text-center min-h-[500px]">
+      <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+      className="flex-1 rounded-[20px] bg-white p-8 flex flex-col justify-center items-center text-center min-h-[500px]">
         <div className="text-black ">
-          <h1 className="text-[48px] font-medium mb-3">What We Do</h1>
+          <h1 className="text-[32px] md:text-[48px] lg:text-[52px] font-medium mb-3">
+            What We Do
+          </h1>
           <p className="text-[18px] font-light mb-6">
             End-to-End Digital Solutions for Every Stage of Growth
           </p>
@@ -70,7 +87,7 @@ const WhoAre: React.FC = () => {
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

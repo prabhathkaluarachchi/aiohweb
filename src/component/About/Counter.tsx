@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import { motion } from "framer-motion";
+
 const stats = [
   { value: 7, label: "Countries" },
   { value: 50, label: "Clients" },
@@ -61,7 +63,12 @@ const Counter: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full py-4 px-0">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center ">
+      <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+      className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center ">
         {counts.map((count, i) => (
           <div key={i}>
             <div className="text-[60px] md:text-[80px] font-bold text-black leading-20">
@@ -73,7 +80,7 @@ const Counter: React.FC = () => {
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

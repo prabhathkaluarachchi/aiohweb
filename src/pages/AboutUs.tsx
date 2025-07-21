@@ -52,9 +52,9 @@ function WebService() {
       </section>
 
       {/* Section 6 */}
-      <section className="bg-amber-800 rounded-[20px] lg:mb-30 mb-20">
+      <section className="rounded-[20px] lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto">
-          {/* <VoicesOfTrust /> */}
+          <VoicesOfTrust />
         </div>
       </section>
     </div>
