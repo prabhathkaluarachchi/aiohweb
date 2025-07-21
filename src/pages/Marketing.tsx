@@ -1,8 +1,8 @@
-import Hero from "../component/Marketing/Hero";
-import Service from "../component/Marketing/Service";
-import Process from "../component/Marketing/Process";
-import RecentWork from "../component/Marketing/RecentWork";
-import Contact from "../component/Marketing/ContactSection";
+import Hero from "../component/marketing/Hero";
+import Service from "../component/marketing/Service";
+import Process from "../component/marketing/Process";
+import RecentWork from "../component/marketing/RecentWork";
+import Contact from "../component/marketing/ContactSection";
 
 import nav from "../assets/img/Navbar.png";
 import footer from "../assets/img/Footer.png";
