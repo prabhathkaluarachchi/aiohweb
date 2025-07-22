@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
-
+import countries from "world-countries";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+import { TextField, MenuItem, Box } from "@mui/material";
+import MotionSection from "../common/MotionSection";
 
+// Import your icons
 import FacebookIcon from "../../assets/contact/facebook.svg";
 import InstagramIcon from "../../assets/contact/instagram.svg";
 import GoogleIcon from "../../assets/contact/google.svg";
@@ -12,14 +13,13 @@ import LinkIcon from "../../assets/contact/linkedin.svg";
 import XIcon from "../../assets/contact/x.svg";
 import AIOHImage from "../../assets/contact/aiohlogo.png";
 
-import MotionSection from "../common/MotionSection";
-
 const commonTextFieldSx = {
   "& .MuiOutlinedInput-root": {
     borderRadius: "20px",
     fontSize: "16px",
     fontWeight: 300,
     px: 2,
+    color: "rgba(0, 0, 0, 0.8)", // Lighter text color (80% opacity)
   },
   "& .MuiOutlinedInput-notchedOutline": {
     borderColor: "rgba(0,0,0,0.45)",
@@ -30,18 +30,38 @@ const commonTextFieldSx = {
   "& .MuiInputLabel-root": {
     fontSize: "16px",
     fontWeight: 300,
-    color: "gray",
+    color: "rgba(0, 0, 0, 0.6)", // Lighter label color
   },
   "& .MuiInputLabel-root.Mui-focused": {
     color: "#000",
+  },
+  "& .MuiInputBase-input::placeholder": {
+    color: "rgba(0, 0, 0, 0.6)", // Placeholder color
+    opacity: 1,
   },
 };
 
 const WebContact: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
-
   const serviceOptions = ["WordPress", "E-commerce", "Custom", "Showcase"];
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [phone, setPhone] = useState({
+    countryCode: "94", // Default to Sri Lanka
+    number: "",
+  });
+  const [errors, setErrors] = useState({
+    from_name: false,
+    from_phone: false,
+    from_email: false,
+    services: false,
+  });
+
+  const isValidPhone = (phone: string) => {
+    return /^\+\d{8,15}$/.test(phone);
+  };
+
+  const isValidEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleServiceSelect = (service: string) => {
     setSelectedServices((prev) => {
@@ -49,7 +69,6 @@ const WebContact: React.FC = () => {
         ? prev.filter((s) => s !== service)
         : [...prev, service];
 
-      // Clear error for services if now selectedServices is not empty
       setErrors((prevErrors) => ({
         ...prevErrors,
         services: newSelected.length === 0,
@@ -58,13 +77,6 @@ const WebContact: React.FC = () => {
       return newSelected;
     });
   };
-
-  const [errors, setErrors] = useState({
-    from_name: false,
-    from_phone: false,
-    from_email: false,
-    services: false,
-  });
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -76,8 +88,155 @@ const WebContact: React.FC = () => {
     }));
   };
 
-  const isValidEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const renderPhoneInput = () => (
+    <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 1,
+          width: "100%",
+          "& > *:first-of-type": {
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "20px 0 0 20px",
+              borderRight: "none",
+            },
+          },
+          "& > *:last-child": {
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "0 20px 20px 0",
+            },
+          },
+        }}
+      >
+        {/* Country Code Selector */}
+        <TextField
+          select
+          name="country_code"
+          value={phone.countryCode}
+          onChange={(e) => {
+            setPhone((prev) => ({
+              ...prev,
+              countryCode: e.target.value,
+            }));
+            setErrors((prev) => ({
+              ...prev,
+              from_phone: !isValidPhone(`+${e.target.value}${phone.number}`),
+            }));
+          }}
+          sx={{
+            ...commonTextFieldSx,
+            minWidth: "120px",
+            "& .MuiSelect-select": {
+              display: "flex",
+              alignItems: "center",
+              color: "rgba(0, 0, 0, 0.9)", // Lighter text color
+            },
+          }}
+          SelectProps={{
+            MenuProps: {
+              PaperProps: {
+                sx: {
+                  maxHeight: 300,
+                  marginTop: 0.5,
+                  width: "350px",
+                  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                  border: "1px solid #e0e0e0",
+                  borderRadius: "12px",
+                },
+              },
+            },
+            renderValue: (value: unknown) => (
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                {
+                  countries.find(
+                    (country) =>
+                      country.idd.root.replace("+", "") +
+                        (country.idd.suffixes[0] || "") ===
+                      value
+                  )?.flag
+                }
+                <Box sx={{ ml: 1 }}>+{value as string}</Box>
+              </Box>
+            ),
+          }}
+        >
+          {countries.map((country: any) => (
+            <MenuItem
+              key={country.cca2}
+              value={
+                country.idd.root.replace("+", "") +
+                (country.idd.suffixes[0] || "")
+              }
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ mr: 1 }}>{country.flag}</Box>
+                <Box sx={{ minWidth: "60px" }}>
+                  +
+                  {country.idd.root.replace("+", "") +
+                    (country.idd.suffixes[0] || "")}
+                </Box>
+                <Box sx={{ ml: 2, opacity: 0.7 }}>{country.name.common}</Box>
+              </Box>
+            </MenuItem>
+          ))}
+        </TextField>
+
+        {/* Phone Number Input */}
+        <TextField
+          name="phone_number_display"
+          value={phone.number}
+          onChange={(e) => {
+            const cleanedValue = e.target.value.replace(/\D/g, "");
+            if (cleanedValue.length <= 12) {
+              setPhone((prev) => ({
+                ...prev,
+                number: cleanedValue,
+              }));
+              setErrors((prev) => ({
+                ...prev,
+                from_phone: !isValidPhone(
+                  `+${phone.countryCode}${cleanedValue}`
+                ),
+              }));
+            }
+          }}
+          error={errors.from_phone}
+          placeholder="Phone number"
+          helperText={
+            errors.from_phone
+              ? "Please enter a valid phone number (8-12 digits)"
+              : ""
+          }
+          sx={{
+            ...commonTextFieldSx,
+            flex: 1,
+            "& .MuiOutlinedInput-root": {
+              paddingLeft: "14px",
+              "& .MuiOutlinedInput-input": {
+                color: "rgba(0, 0, 0, 0.7)", // Lighter text color
+                fontSize: "16px",
+                fontWeight: 300,
+              },
+            },
+            "& .MuiInputBase-input::placeholder": {
+              color: "rgba(0, 0, 0, 0.6)",
+              opacity: 1,
+              fontSize: "16px",
+              fontWeight: 300,
+            },
+          }}
+          InputProps={{
+            sx: {
+              "&::placeholder": {
+                color: "rgba(0, 0, 0, 0.6)",
+                opacity: 1,
+              },
+            },
+          }}
+        />
+      </Box>
+    </Box>
+  );
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,20 +244,25 @@ const WebContact: React.FC = () => {
 
     const formData = new FormData(form.current);
     const name = formData.get("from_name")?.toString().trim();
-    const phone = formData.get("from_phone")?.toString().trim();
     const email = formData.get("from_email")?.toString().trim();
+    const fullPhoneNumber = `+${phone.countryCode}${phone.number}`;
 
     const newErrors = {
       from_name: !name,
-      from_phone: !phone,
+      from_phone: !phone.number || !isValidPhone(fullPhoneNumber),
       from_email: !email || !isValidEmail(email),
       services: selectedServices.length === 0,
     };
 
     setErrors(newErrors);
-
     const hasError = Object.values(newErrors).some(Boolean);
     if (hasError) return;
+
+    const phoneInput = document.createElement("input");
+    phoneInput.type = "hidden";
+    phoneInput.name = "from_phone";
+    phoneInput.value = fullPhoneNumber;
+    form.current.appendChild(phoneInput);
 
     emailjs
       .sendForm(
@@ -129,6 +293,7 @@ const WebContact: React.FC = () => {
 
           form.current?.reset();
           setSelectedServices([]);
+          setPhone({ countryCode: "94", number: "" });
           setErrors({
             from_name: false,
             from_phone: false,
@@ -156,7 +321,6 @@ const WebContact: React.FC = () => {
 
   return (
     <>
-      {/* Mobile & Tablet Heading - show only below lg */}
       <MotionSection
         delay={0.5}
         direction="fade"
@@ -166,11 +330,11 @@ const WebContact: React.FC = () => {
           Reach Out, We're Listening
         </h2>
         <p className="text-[16px] leading-[26px] text-[#191818] mt-4 font-light">
-          We’re ready to assist. Share the details below and we’ll get back to
+          We're ready to assist. Share the details below and we'll get back to
           you soon.
         </p>
       </MotionSection>
-      {/* Contact Form */}
+
       <div className="w-full lg:w-1/2 pr-0 lg:pr-4 mb-0">
         <MotionSection delay={0.5} direction="fadeUp">
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
@@ -187,29 +351,7 @@ const WebContact: React.FC = () => {
               />
             </Box>
 
-            <Box sx={{ width: "100%" }}>
-              <TextField
-                name="from_phone"
-                label="Phone Number"
-                variant="outlined"
-                fullWidth
-                error={errors.from_phone}
-                helperText={
-                  errors.from_phone
-                    ? "Please enter a valid contact number. Digits up to 15 digits"
-                    : "e.g. 07xxxxxxxx or up to 15 digits"
-                }
-                onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, ""); // Remove non-digits
-                  if (value.length <= 15) {
-                    e.target.value = value;
-                    handleInputChange(e);
-                  }
-                }}
-                inputProps={{ maxLength: 15 }}
-                sx={commonTextFieldSx}
-              />
-            </Box>
+            {renderPhoneInput()}
 
             <Box sx={{ width: "100%" }}>
               <TextField
@@ -227,10 +369,6 @@ const WebContact: React.FC = () => {
             </Box>
 
             <div className="flex flex-col gap-2">
-              {/* <label className="text-sm text-[#191818] font-light">
-                Select web services*
-              </label> */}
-
               <TextField
                 name="services"
                 label="Selected services from below"
@@ -291,28 +429,24 @@ const WebContact: React.FC = () => {
         </MotionSection>
       </div>
 
-      {/* Right Side: Content & Cards */}
       <MotionSection
         delay={0.7}
         direction="up"
         className="w-full lg:w-1/2 flex flex-col"
       >
-        {/* Desktop Heading & Description - show only lg and above */}
         <div className="hidden lg:block">
           <h2 className="text-[26px] lg:text-[48px] md:text-[30px] leading-[40px] lg:leading-[62px] font-bold text-[#191818]">
             Partner with us to build <br />
-            what’s <span className="text-[#02ec97]">next</span>
+            what's <span className="text-[#02ec97]">next</span>
           </h2>
           <p className="text-[16px] lg:text-[18px] leading-[26px] lg:leading-[28px] text-[#191818] mt-2 font-light mb-[-20px]">
-            Have an idea? Let’s bring it to life. Whether it's a bold vision or
+            Have an idea? Let's bring it to life. Whether it's a bold vision or
             a simple spark, <br />
             we're here to help turn your ideas into reality.
           </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full md:mt-10 lg:pt-4 ">
-          {/* Card 1 - Address */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full md:mt-10 lg:pt-4">
           <MotionSection
             delay={0.7}
             direction="right"
@@ -326,7 +460,6 @@ const WebContact: React.FC = () => {
             </p>
           </MotionSection>
 
-          {/* Card 2 - Phone */}
           <MotionSection
             delay={0.7}
             direction="right"
@@ -335,20 +468,15 @@ const WebContact: React.FC = () => {
             <p className="text-[18px] font-normal mb-1 text-[#191818]">
               Phone :
             </p>
-
-            {/* Desktop & Tablet view */}
             <p className="hidden sm:block text-[16px] text-[#191818] leading-[32px] font-light">
               +94 81 2121 051 <br />
               +94 77 6722 709
             </p>
-
-            {/* Mobile-only view */}
             <p className="block sm:hidden text-[16px] text-[#191818] leading-[32px] font-light">
               +94 81 2121 051 / +94 77 6722 709
             </p>
           </MotionSection>
 
-          {/* Card 3 - Email */}
           <MotionSection
             delay={0.7}
             direction="right"
@@ -360,7 +488,6 @@ const WebContact: React.FC = () => {
             </p>
           </MotionSection>
 
-          {/* Card 4 - Social Icons */}
           <MotionSection
             delay={0.7}
             direction="right"
@@ -370,7 +497,6 @@ const WebContact: React.FC = () => {
               Follow Us:
             </p>
             <div className="flex gap-4">
-              {/* Facebook */}
               <a
                 href="https://www.facebook.com/allinoneholdings"
                 target="_blank"
@@ -383,8 +509,6 @@ const WebContact: React.FC = () => {
                   className="w-[18px] h-[18px]"
                 />
               </a>
-
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/all_in_one_holdings"
                 target="_blank"
@@ -397,8 +521,6 @@ const WebContact: React.FC = () => {
                   className="w-[18px] h-[18px]"
                 />
               </a>
-
-              {/* Google */}
               <a
                 href="https://g.co/kgs/Cw4rrUZ"
                 target="_blank"
@@ -411,17 +533,18 @@ const WebContact: React.FC = () => {
                   className="w-[18px] h-[18px]"
                 />
               </a>
-
-              {/* Linkedin */}
               <a
                 href="https://lk.linkedin.com/company/all-in-one-holdings"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
-                <img src={LinkIcon} alt="X" className="w-[18px] h-[18px]" />
+                <img
+                  src={LinkIcon}
+                  alt="LinkedIn"
+                  className="w-[18px] h-[18px]"
+                />
               </a>
-              {/* X com */}
               <a
                 href="https://x.com/allinoneholding"
                 target="_blank"

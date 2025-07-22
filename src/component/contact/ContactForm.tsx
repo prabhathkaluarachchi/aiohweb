@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
-
+import countries from "world-countries";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+import { TextField, MenuItem, Box } from "@mui/material";
+import MotionSection from "../common/MotionSection";
 
+// Import your icons
 import FacebookIcon from "../../assets/contact/facebook.svg";
 import InstagramIcon from "../../assets/contact/instagram.svg";
 import GoogleIcon from "../../assets/contact/google.svg";
@@ -12,11 +13,38 @@ import LinkIcon from "../../assets/contact/linkedin.svg";
 import XIcon from "../../assets/contact/x.svg";
 import AIOHImage from "../../assets/contact/aiohlogo.png";
 
-
-import MotionSection from "../common/MotionSection";
+// Common TextField styles
+const textFieldStyles = {
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "20px",
+    fontSize: "16px",
+    fontWeight: 300,
+    px: 2,
+  },
+  "& .MuiOutlinedInput-notchedOutline": {
+    borderColor: "rgba(0,0,0,0.45)",
+  },
+  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: "#000",
+  },
+  "& .MuiInputLabel-root": {
+    fontSize: "16px",
+    fontWeight: 300,
+    color: "gray",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "#000",
+  },
+};
 
 const ContactForm: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
+
+  // Add phone state for country code + number
+  const [phone, setPhone] = useState({
+    countryCode: "94", // Default to Sri Lanka
+    number: "",
+  });
 
   const [errors, setErrors] = useState({
     from_name: false,
@@ -25,19 +53,155 @@ const ContactForm: React.FC = () => {
     message: false,
   });
 
+  // Add phone validation function
+  const isValidPhone = (phone: string) => {
+    return /^\+\d{8,15}$/.test(phone);
+  };
+
+  const isValidEmail = (email: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: value.trim() === "",
     }));
   };
 
-  const isValidEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const renderPhoneInput = () => (
+    <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 1,
+          width: "100%",
+          "& > *:first-of-type .MuiOutlinedInput-root": {
+            borderRadius: "20px 0 0 20px",
+            borderRight: "none",
+          },
+          "& > *:last-child .MuiOutlinedInput-root": {
+            borderRadius: "0 20px 20px 0",
+          },
+        }}
+      >
+        {/* Country Code Selector */}
+        <TextField
+          select
+          name="country_code"
+          value={phone.countryCode}
+          onChange={(e) => {
+            setPhone((prev) => ({ ...prev, countryCode: e.target.value }));
+            setErrors((prev) => ({
+              ...prev,
+              from_phone: !isValidPhone(`+${e.target.value}${phone.number}`),
+            }));
+          }}
+          sx={{
+            ...textFieldStyles,
+            minWidth: "120px",
+            "& .MuiSelect-select": {
+              display: "flex",
+              alignItems: "center",
+            },
+          }}
+          SelectProps={{
+            MenuProps: {
+              PaperProps: {
+                sx: {
+                  maxHeight: 300,
+                  marginTop: 0.5,
+                  width: "350px",
+                  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                  border: "1px solid #e0e0e0",
+                  borderRadius: "12px",
+                },
+              },
+            },
+            renderValue: (value: unknown) => (
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                {
+                  countries.find(
+                    (c) =>
+                      c.idd.root.replace("+", "") +
+                        (c.idd.suffixes[0] || "") ===
+                      value
+                  )?.flag
+                }
+                <Box sx={{ ml: 1 }}>+{value as string}</Box>
+              </Box>
+            ),
+          }}
+        >
+          {countries.map((country: any) => (
+            <MenuItem
+              key={country.cca2}
+              value={
+                country.idd.root.replace("+", "") +
+                (country.idd.suffixes[0] || "")
+              }
+            >
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ mr: 1 }}>{country.flag}</Box>
+                <Box sx={{ minWidth: "60px" }}>
+                  +
+                  {country.idd.root.replace("+", "") +
+                    (country.idd.suffixes[0] || "")}
+                </Box>
+                <Box sx={{ ml: 2, opacity: 0.7 }}>{country.name.common}</Box>
+              </Box>
+            </MenuItem>
+          ))}
+        </TextField>
+
+        {/* Phone Number Input */}
+        <TextField
+          name="phone_number_display"
+          value={phone.number}
+          onChange={(e) => {
+            const cleanedValue = e.target.value.replace(/\D/g, "");
+            if (cleanedValue.length <= 15) {
+              setPhone((prev) => ({ ...prev, number: cleanedValue }));
+              setErrors((prev) => ({
+                ...prev,
+                from_phone: !isValidPhone(
+                  `+${phone.countryCode}${cleanedValue}`
+                ),
+              }));
+            }
+          }}
+          error={errors.from_phone}
+          placeholder="Phone number"
+          helperText={
+            errors.from_phone
+              ? "Please enter a valid phone number (8-15 digits)"
+              : ""
+          }
+          sx={{
+            ...textFieldStyles,
+            flex: 1,
+            "& .MuiOutlinedInput-input": {
+              paddingLeft: "2px",
+              "&::placeholder": {
+                color: "gray",
+                opacity: 1,
+              },
+            },
+          }}
+          InputProps={{
+            sx: {
+              "&::placeholder": {
+                color: "gray",
+                opacity: 1,
+              },
+            },
+          }}
+        />
+      </Box>
+    </Box>
+  );
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,23 +209,27 @@ const ContactForm: React.FC = () => {
 
     const formData = new FormData(form.current);
     const name = formData.get("from_name")?.toString().trim();
-    const phone = formData.get("from_phone")?.toString().trim();
     const email = formData.get("from_email")?.toString().trim();
     const message = formData.get("message")?.toString().trim();
+    const fullPhoneNumber = `+${phone.countryCode}${phone.number}`;
 
     const newErrors = {
       from_name: !name,
-      from_phone: !phone,
+      from_phone: !phone.number || !isValidPhone(fullPhoneNumber),
       from_email: !email || !isValidEmail(email),
       message: !message,
     };
 
     setErrors(newErrors);
-
     const hasError = Object.values(newErrors).some(Boolean);
     if (hasError) return;
 
-    // Proceed with emailjs
+    const phoneInput = document.createElement("input");
+    phoneInput.type = "hidden";
+    phoneInput.name = "from_phone";
+    phoneInput.value = fullPhoneNumber;
+    form.current.appendChild(phoneInput);
+
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -83,7 +251,7 @@ const ContactForm: React.FC = () => {
             customClass: {
               popup: "rounded-xl p-6",
               title: "text-[22px] font-semibold",
-              image: "object-contain", // Prevents image stretching
+              image: "object-contain",
               confirmButton:
                 "w-full mt-4 bg-[#02ec97] text-[#191818] text-[18px] font-medium rounded-full py-[12px] px-6 hover:bg-[#02ec97]/80 hover:text-[#191818]/80 transition cursor-pointer",
             },
@@ -91,6 +259,7 @@ const ContactForm: React.FC = () => {
           });
 
           form.current?.reset();
+          setPhone({ countryCode: "94", number: "" });
           setErrors({
             from_name: false,
             from_phone: false,
@@ -129,10 +298,11 @@ const ContactForm: React.FC = () => {
           Reach Out, We're Listening
         </h2>
         <p className="text-[16px] leading-[26px] text-[#191818] mt-4 font-light">
-          We’re ready to assist. Share the details below and we’ll get back to
+          We're ready to assist. Share the details below and we'll get back to
           you soon.
         </p>
       </MotionSection>
+
       {/* Contact Form */}
       <div className="w-full lg:w-1/2 pr-0 lg:pr-4 mb-4">
         <MotionSection delay={0.5} direction="fadeUp">
@@ -146,66 +316,12 @@ const ContactForm: React.FC = () => {
                 error={errors.from_name}
                 helperText={errors.from_name ? "Name is required." : ""}
                 onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={textFieldStyles}
               />
             </Box>
 
-            <Box sx={{ width: "100%" }}>
-              <TextField
-                name="from_phone"
-                label="Phone Number"
-                variant="outlined"
-                fullWidth
-                error={errors.from_phone}
-                helperText={errors.from_phone ? "Phone is required." : ""}
-                onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
-              />
-            </Box>
+            {/* Replace the old phone input with the new country code + phone input */}
+            {renderPhoneInput()}
 
             <Box sx={{ width: "100%" }}>
               <TextField
@@ -218,29 +334,7 @@ const ContactForm: React.FC = () => {
                   errors.from_email ? "Please enter a valid email address." : ""
                 }
                 onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={textFieldStyles}
               />
             </Box>
 
@@ -255,29 +349,7 @@ const ContactForm: React.FC = () => {
                 error={errors.message}
                 helperText={errors.message ? "Message is required." : ""}
                 onChange={handleInputChange}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "20px",
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    px: 2,
-                  },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "rgba(0,0,0,0.45)",
-                  },
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "#000",
-                    },
-                  "& .MuiInputLabel-root": {
-                    fontSize: "16px",
-                    fontWeight: 300,
-                    color: "gray",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#000",
-                  },
-                }}
+                sx={textFieldStyles}
               />
             </Box>
 
@@ -303,7 +375,8 @@ const ContactForm: React.FC = () => {
             Reach Out, We're Listening
           </h2>
           <p className="text-[16px] lg:text-[18px] leading-[26px] lg:leading-[28px] text-[#191818] mt-6 font-light mb-[-20px]">
-            We’re ready to assist. Share your technology needs below, <br /> and we’ll get back to you soon.
+            We're ready to assist. Share your technology needs below, <br /> and
+            we'll get back to you soon.
           </p>
         </div>
 
