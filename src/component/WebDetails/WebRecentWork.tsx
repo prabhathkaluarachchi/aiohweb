@@ -377,7 +377,7 @@ const WebRecentWork: React.FC = () => {
               className="relative bg-white hover:bg-[#01213A] text-secondary hover:text-white rounded-xl shadow-sm hover:shadow-md transition-transform group hover:scale-[1.015] flex flex-col justify-between h-full"
             >
               {/* Card Top Content */}
-              <div className="items-start p-4 pt-4 sm:pt-6">
+              <div className="items-start p-4 pt-4 sm:pt-6 cursor-pointer" onClick={() => setPopupData(project)}>
                 <div className="flex justify-between md:mb-4">
                   <h3 className="font-medium text-sm md:text-lg w-3/4 sm:max-w-4/5">
                     {project.title}
