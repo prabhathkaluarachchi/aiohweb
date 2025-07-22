@@ -597,7 +597,7 @@ const RecentWork: React.FC = () => {
 
                 <div className="mt-6 text-secondary">
                   <button className="w-fit my-4 px-6 py-4 rounded-full font-medium bg-primary hover:bg-primary/80 flex items-center justify-center gap-2 transition cursor-pointer">
-                    <span className="leading-none mb-0.5">View Project</span>
+                    <span className="leading-none lg:mb-0.5">View Project</span>
                     <LuCircleChevronRight className="text-base leading-none" />
                   </button>
                 </div>

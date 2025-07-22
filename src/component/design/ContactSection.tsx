@@ -40,6 +40,11 @@ const ContactSection: React.FC = () => {
       color: "#191818",
       fontWeight: 400,
     },
+    "& .MuiInputBase-input::placeholder": {
+      fontSize: "16px",
+      fontWeight: 300,
+      color: "#191818",
+    },
     "& .MuiFormHelperText-root": {
       color: "#19181866",
       fontSize: "12px",
