@@ -496,7 +496,7 @@ const WebContact: React.FC = () => {
             <p className="text-[18px] font-normal mb-1 text-center lg:text-left">
               Follow Us:
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="https://www.facebook.com/allinoneholdings"
                 target="_blank"
