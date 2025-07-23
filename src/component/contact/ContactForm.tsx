@@ -71,137 +71,128 @@ const ContactForm: React.FC = () => {
     }));
   };
 
-  const renderPhoneInput = () => (
-    <Box sx={{ width: "100%" }}>
-      <Box
+const renderPhoneInput = () => (
+  <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        gap: 1,
+        width: "100%",
+        "& > *:first-of-type .MuiOutlinedInput-root": {
+          borderRadius: "20px 0 0 20px",
+          borderRight: "none",
+        },
+        "& > *:last-child .MuiOutlinedInput-root": {
+          borderRadius: "0 20px 20px 0",
+        },
+      }}
+    >
+      {/* Country Code Selector */}
+      <TextField
+        select
+        name="country_code"
+        value={phone.countryCode}
+        onChange={(e) => {
+          setPhone((prev) => ({ ...prev, countryCode: e.target.value }));
+          setErrors((prev) => ({
+            ...prev,
+            from_phone: !isValidPhone(`+${e.target.value}${phone.number}`),
+          }));
+        }}
         sx={{
-          display: "flex",
-          gap: 1,
-          width: "100%",
-          "& > *:first-of-type .MuiOutlinedInput-root": {
-            borderRadius: "20px 0 0 20px",
-            borderRight: "none",
-          },
-          "& > *:last-child .MuiOutlinedInput-root": {
-            borderRadius: "0 20px 20px 0",
+          ...textFieldStyles,
+          minWidth: "120px",
+          "& .MuiSelect-select": {
+            display: "flex",
+            alignItems: "center",
           },
         }}
+        SelectProps={{
+          MenuProps: {
+            PaperProps: {
+              sx: {
+                maxHeight: 300,
+                marginTop: 0.5,
+                width: "350px",
+                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                border: "1px solid #e0e0e0",
+                borderRadius: "12px",
+              },
+            },
+          },
+          renderValue: (value: unknown) => (
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              {
+                countries.find(
+                  (c) =>
+                    c.idd.root.replace("+", "") +
+                      (c.idd.suffixes[0] || "") ===
+                    value
+                )?.flag
+              }
+              <Box sx={{ ml: 1 }}>+{value as string}</Box>
+            </Box>
+          ),
+        }}
       >
-        {/* Country Code Selector */}
-        <TextField
-          select
-          name="country_code"
-          value={phone.countryCode}
-          onChange={(e) => {
-            setPhone((prev) => ({ ...prev, countryCode: e.target.value }));
+        {countries.map((country: any) => (
+          <MenuItem
+            key={country.cca2}
+            value={
+              country.idd.root.replace("+", "") + (country.idd.suffixes[0] || "")
+            }
+          >
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ mr: 1 }}>{country.flag}</Box>
+              <Box sx={{ minWidth: "60px" }}>
+                +
+                {country.idd.root.replace("+", "") +
+                  (country.idd.suffixes[0] || "")}
+              </Box>
+              <Box sx={{ ml: 2, opacity: 0.7 }}>{country.name.common}</Box>
+            </Box>
+          </MenuItem>
+        ))}
+      </TextField>
+
+      {/* Phone Number Input (no helperText here) */}
+      <TextField
+        name="phone_number_display"
+        value={phone.number}
+        onChange={(e) => {
+          const cleanedValue = e.target.value.replace(/\D/g, "");
+          if (cleanedValue.length <= 15) {
+            setPhone((prev) => ({ ...prev, number: cleanedValue }));
             setErrors((prev) => ({
               ...prev,
-              from_phone: !isValidPhone(`+${e.target.value}${phone.number}`),
+              from_phone: !isValidPhone(`+${phone.countryCode}${cleanedValue}`),
             }));
-          }}
-          sx={{
-            ...textFieldStyles,
-            minWidth: "120px",
-            "& .MuiSelect-select": {
-              display: "flex",
-              alignItems: "center",
-            },
-          }}
-          SelectProps={{
-            MenuProps: {
-              PaperProps: {
-                sx: {
-                  maxHeight: 300,
-                  marginTop: 0.5,
-                  width: "350px",
-                  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: "12px",
-                },
-              },
-            },
-            renderValue: (value: unknown) => (
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                {
-                  countries.find(
-                    (c) =>
-                      c.idd.root.replace("+", "") +
-                        (c.idd.suffixes[0] || "") ===
-                      value
-                  )?.flag
-                }
-                <Box sx={{ ml: 1 }}>+{value as string}</Box>
-              </Box>
-            ),
-          }}
-        >
-          {countries.map((country: any) => (
-            <MenuItem
-              key={country.cca2}
-              value={
-                country.idd.root.replace("+", "") +
-                (country.idd.suffixes[0] || "")
-              }
-            >
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Box sx={{ mr: 1 }}>{country.flag}</Box>
-                <Box sx={{ minWidth: "60px" }}>
-                  +
-                  {country.idd.root.replace("+", "") +
-                    (country.idd.suffixes[0] || "")}
-                </Box>
-                <Box sx={{ ml: 2, opacity: 0.7 }}>{country.name.common}</Box>
-              </Box>
-            </MenuItem>
-          ))}
-        </TextField>
-
-        {/* Phone Number Input */}
-        <TextField
-          name="phone_number_display"
-          value={phone.number}
-          onChange={(e) => {
-            const cleanedValue = e.target.value.replace(/\D/g, "");
-            if (cleanedValue.length <= 15) {
-              setPhone((prev) => ({ ...prev, number: cleanedValue }));
-              setErrors((prev) => ({
-                ...prev,
-                from_phone: !isValidPhone(
-                  `+${phone.countryCode}${cleanedValue}`
-                ),
-              }));
-            }
-          }}
-          error={errors.from_phone}
-          placeholder="Phone number"
-          helperText={
-            errors.from_phone
-              ? "Please enter a valid phone number (8-15 digits)"
-              : ""
           }
-          sx={{
-            ...textFieldStyles,
-            flex: 1,
-            "& .MuiOutlinedInput-input": {
-              paddingLeft: "2px",
-              "&::placeholder": {
-                color: "gray",
-                opacity: 1,
-              },
+        }}
+        placeholder="Phone number"
+        sx={{
+          ...textFieldStyles,
+          flex: 1,
+          "& .MuiOutlinedInput-input": {
+            paddingLeft: "2px",
+            "&::placeholder": {
+              color: "gray",
+              opacity: 1,
             },
-          }}
-          InputProps={{
-            sx: {
-              "&::placeholder": {
-                color: "gray",
-                opacity: 1,
-              },
-            },
-          }}
-        />
-      </Box>
+          },
+        }}
+      />
     </Box>
-  );
+
+    {/* Move validation message here */}
+    {errors.from_phone && (
+      <Box sx={{ color: "#d32f2f", fontSize: "0.75rem", marginTop: "4px", marginLeft: "14px" }}>
+        Please enter a valid phone number (8–15 digits)
+      </Box>
+    )}
+  </Box>
+);
+
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -272,7 +263,7 @@ const ContactForm: React.FC = () => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            html: "Something went wrong.<br/>Please try again.",
+            html: "An unexpected error occurred on our system.<br/>Please try again in a few minutes",
             customClass: {
               popup: "!rounded-[20px] p-6",
               title: "text-[22px] font-semibold",
@@ -290,7 +281,7 @@ const ContactForm: React.FC = () => {
     <>
       {/* Mobile & Tablet Heading - show only below lg */}
       <MotionSection
-        delay={0.5}
+        delay={0.5} 
         direction="fade"
         className="block lg:hidden mb-2 w-full text-center"
       >
@@ -346,8 +337,6 @@ const ContactForm: React.FC = () => {
                 rows={6}
                 variant="outlined"
                 fullWidth
-                error={errors.message}
-                helperText={errors.message ? "Message is required." : ""}
                 onChange={handleInputChange}
                 sx={textFieldStyles}
               />
