@@ -81,7 +81,7 @@ const VoicesOfTrust: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="bg-gradient-to-b from-[#010A12] to-[#074378] rounded-xl p-6 lg:px-6 md:px-38 text-white shadow-lg flex flex-col items-center justify-center text-center"
+          className="bg-gradient-to-b from-[#010A12] to-[#074378] lg:py-20 rounded-xl p-6 lg:px-6 md:px-38 text-white shadow-lg flex flex-col items-center justify-center text-center"
         >
           <div className="text-[96px] font-medium text-[#02EC97]">4.9</div>
           <div className="flex items-center justify-center gap-4 mb-12 mt-[-10px]">
@@ -117,18 +117,18 @@ const VoicesOfTrust: React.FC = () => {
           className="lg:col-span-2 relative bg-white rounded-xl p-8 shadow-md min-h-[420px] flex flex-col justify-between overflow-hidden"
         >
           {/* Navigation Buttons */}
-          <div className="absolute top-4 right-4 flex gap-2 z-10">
+          <div className="absolute top-4 right-4 flex gap-2 z-10 p-2">
             <button
               onClick={handlePrev}
               className="w-10 h-10 bg-[#01213A] text-white rounded-full flex items-center justify-center shadow-md hover:opacity-90 transition cursor-pointer"
             >
-              <img src={LeftArrow} alt="Previous" className="w-4 h-4" />
+              <img src={LeftArrow} alt="Previous" className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
               className="w-10 h-10 bg-[#02EC97] text-white rounded-full flex items-center justify-center shadow-md hover:opacity-90 transition cursor-pointer"
             >
-              <img src={RightArrow} alt="Next" className="w-4 h-4" />
+              <img src={RightArrow} alt="Next" className="w-5 h-5" />
             </button>
           </div>
 
@@ -139,7 +139,7 @@ const VoicesOfTrust: React.FC = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: direction === "right" ? -200 : 200, opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col justify-between h-full"
+              className="flex flex-col justify-between h-full lg:py-4"
             >
               {/* Top: Quote icon */}
               <img src={quotesSvg} alt="Quote" className="w-20 h-20 mb-4" />

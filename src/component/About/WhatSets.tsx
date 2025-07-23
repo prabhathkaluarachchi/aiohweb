@@ -179,9 +179,9 @@ const WhatSets: React.FC = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.6 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="hidden lg:block bg-gradient-to-b from-black to-[#00376E] rounded-[20px] py-12 px-6"
+        className="hidden lg:block bg-gradient-to-b from-black to-[#00376E] rounded-[20px] py-16 px-6"
       >
-        <div className="grid grid-cols-3 gap-9 w-11/12 mx-auto">
+        <div className="grid grid-cols-3 gap-12 w-11/12 mx-auto">
           {/* Top Row */}
           <div className="bg-white/20 rounded-[20px] p-6 flex flex-col gap-2 text-white font-roboto">
             <div className="flex items-center gap-3 mb-6">

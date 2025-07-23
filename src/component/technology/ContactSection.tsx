@@ -156,7 +156,7 @@ const ContactSection: React.FC = () => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            html: "An unexpected error occurred on our system.<br/>Please try again in a few minutes",
+            html: "A system or user network error occurred.<br/>Please try again shortly.",
             customClass: {
               popup: "!rounded-[20px] p-6",
               title: "text-[22px] font-semibold",
