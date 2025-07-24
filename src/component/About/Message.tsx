@@ -1,30 +1,99 @@
 import React from "react";
+import manImg from "../../assets/about/man.png";
+import quotesSvg from "../../assets/about/quotes.svg";
+import gradientBg from "../../assets/about/gredientbg.png";
+import whiteBg from "../../assets/about/whitebg.png";
 
 import { motion } from "framer-motion";
 
+const directorData = [
+  {
+    id: 1,
+    quote:
+      "At the heart of our company is a commitment to innovation, integrity, and impact. We’re not just building technology — we’re shaping a smarter, more connected world.",
+  },
+  {
+    id: 2,
+    quote:
+      "Together with our clients and team, we continue to challenge limits and redefine success. Our strategy is rooted in long-term vision and purposeful action.",
+  },
+  {
+    id: 3,
+    quote:
+      "Leadership is about inspiring change and pushing boundaries. We believe in collaboration, transparency, and making an impact that matters.",
+  },
+];
+
 const Message: React.FC = () => {
   return (
-    <div className="w-full py-0 px-0">
-      {/* Text section */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-center mb-8"
-      >
-        <h2 className="text-[28px] md:text-[48px] lg:text-[52px] font-bold text-black ">
+    <motion.div className="w-full">
+      {/* Title */}
+      <div className="text-center mb-12">
+        <h2 className="text-[28px] md:text-[48px] lg:text-[52px] font-bold text-black">
           Our Director’s Insight
         </h2>
-        <p className="text-[18px] md:text-[18px] font-light text-black mt-2 max-w-3xl mx-auto">
+        <p className="text-[18px] font-light text-black mt-2 max-w-3xl mx-auto">
           Insights from our leadership—highlighting the values and vision
-          guiding our path
+          guiding our path.
         </p>
-      </motion.div>
+      </div>
 
-      {/* Bottom section */}
-      <div className="w-full flex justify-center items-center bg-amber-700 p-60"></div>
-    </div>
+      {/* Cards */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="flex flex-col md:flex-row gap-40 md:gap-10 lg:gap-10 justify-center items-center mt-40"
+      >
+        {directorData.map((director) => (
+          <div
+            key={director.id}
+            className="relative w-full md:w-1/3 flex justify-center"
+          >
+            {/* Background Gradient Image with original size */}
+            <img
+              src={gradientBg}
+              alt="Gradient Background"
+              className="absolute z-0"
+              style={{
+                top: 0,
+                left: 0,
+                width: "auto",
+                height: "auto",
+                maxWidth: "80%",
+              }}
+            />
+
+            {/* Man Image */}
+            <img
+              src={manImg}
+              alt="Director"
+              className="absolute z-[5] w-[200px] h-auto object-contain"
+              style={{
+                top: "-140px",
+                left: "60px",
+              }}
+            />
+
+            {/* White Card Image with Quote */}
+            <div className="relative z-10 w-full ml-[60px] mt-24">
+              <img
+                src={whiteBg}
+                alt="Card Background"
+                className="w-[95%] h-auto object-contain"
+              />
+              <div className="absolute top-6 left-6 right-6 bottom-6 flex flex-col justify-start">
+                <img src={quotesSvg} alt="quote" className="w-16 h-16 mb-0" />
+                <p className="text-[16px] text-black/80 leading-relaxed ml-4 mr-4">
+                  {director.quote}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </motion.div>
   );
 };
 
