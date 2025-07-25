@@ -26,9 +26,15 @@ const directorData = [
 
 const Message: React.FC = () => {
   return (
-    <motion.div className="w-full">
+    <div className="w-full">
       {/* Title */}
-      <div className="text-center mb-12">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-center mb-12"
+      >
         <h2 className="text-[28px] md:text-[48px] lg:text-[52px] font-bold text-black">
           Our Director’s Insight
         </h2>
@@ -36,20 +42,20 @@ const Message: React.FC = () => {
           Insights from our leadership—highlighting the values and vision
           guiding our path.
         </p>
-      </div>
+      </motion.div>
 
       {/* Cards */}
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.6 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex flex-col md:flex-row gap-40 md:gap-10 lg:gap-10 justify-center items-center mt-40"
+        className="flex flex-col lg:flex-row gap-45 lg:gap-10 justify-center items-center mt-40"
       >
         {directorData.map((director) => (
           <div
             key={director.id}
-            className="relative w-full md:w-1/3 flex justify-center"
+            className="relative w-full md:w-3/5 lg:w-1/3 flex justify-center"
           >
             {/* Background Gradient Image with original size */}
             <img
@@ -84,8 +90,8 @@ const Message: React.FC = () => {
                 className="w-[95%] h-auto object-contain"
               />
               <div className="absolute top-6 left-6 right-6 bottom-6 flex flex-col justify-start">
-                <img src={quotesSvg} alt="quote" className="w-16 h-16 mb-0" />
-                <p className="text-[16px] text-black/80 leading-relaxed ml-4 mr-4">
+                <img src={quotesSvg} alt="quote" className="md:w-16 md:h-16 mb-0 w-12 h-12" />
+                <p className="md:text-[16px] text-black/80 leading-relaxed ml-4 mr-4 text-[14px]">
                   {director.quote}
                 </p>
               </div>
@@ -93,7 +99,7 @@ const Message: React.FC = () => {
           </div>
         ))}
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
