@@ -12,7 +12,7 @@ const WhoAre: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="relative flex-1 rounded-[20px] bg-gradient-to-r from-[#010A12] to-[#074378]  p-8 flex flex-col justify-center items-center text-center min-h-[500px]"
       >
@@ -48,7 +48,7 @@ const WhoAre: React.FC = () => {
       <motion.div 
                 initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
       className="flex-1 rounded-[20px] bg-white p-8 flex flex-col justify-center items-center text-center min-h-[500px]">
         <div className="text-black ">

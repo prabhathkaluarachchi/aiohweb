@@ -177,7 +177,7 @@ const WhatSets: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="hidden lg:block bg-gradient-to-b from-black to-[#00376E] rounded-[20px] py-16 px-6"
       >
