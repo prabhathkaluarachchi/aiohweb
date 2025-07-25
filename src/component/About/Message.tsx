@@ -91,7 +91,7 @@ const Message: React.FC = () => {
               />
               <div className="absolute top-6 left-6 right-6 bottom-6 flex flex-col justify-start">
                 <img src={quotesSvg} alt="quote" className="md:w-16 md:h-16 mb-0 w-12 h-12" />
-                <p className="md:text-[16px] text-black/80 leading-relaxed ml-4 mr-4 text-[14px]">
+                <p className="md:text-[16px] text-[14px] leading-relaxed text-black/80  ml-4 mr-4 ">
                   {director.quote}
                 </p>
               </div>
