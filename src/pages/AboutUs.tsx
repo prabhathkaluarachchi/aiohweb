@@ -7,7 +7,8 @@ import Counter from "../component/About/Counter";
 import Map from "../component/About/Map";
 import WhatSets from "../component/About/WhatSets";
 import VoicesOfTrust from "../component/About/VoicesOfTrust";
-// import Message from "../component/About/Message";
+import Message from "../component/About/Message";
+import Locations from "../component/About/Locations";
 
 function WebService() {
   useEffect(() => {
@@ -53,13 +54,20 @@ function WebService() {
       </section>
 
       {/* Section 6 */}
-      {/* <section className="rounded-[20px] lg:mb-30 mb-20">
+      <section className="rounded-[20px] lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto">
           <Message />
         </div>
-      </section> */}
+      </section>
 
       {/* Section 7 */}
+      <section className="rounded-[20px] lg:mb-30 mb-20">
+        <div className="w-11/12 mx-auto">
+          <Locations />
+        </div>
+      </section>
+
+      {/* Section 8 */}
       <section className="rounded-[20px] lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto">
           <VoicesOfTrust />

@@ -66,22 +66,22 @@ const WhoAre: React.FC = () => {
             happen.
           </p>
 
-          <div className="flex justify-center gap-6 font-medium text-[16px]">
+          <div className="flex justify-center gap-6 font-medium text-[16px] ">
             <a
               href="/Marketing"
-              className="text-black/45 underline decoration-black/45"
+              className="text-black/45 underline decoration-black/45 hover:text-black/70"
             >
               Marketing
             </a>
             <a
               href="/Webservice"
-              className="text-black/45 underline decoration-black/45"
+              className="text-black/45 underline decoration-black/45 hover:text-black/70"
             >
               Technology
             </a>
             <a
               href="/Design"
-              className="text-black/45 underline decoration-black/45"
+              className="text-black/45 underline decoration-black/45 hover:text-black/70"
             >
               Design
             </a>
