@@ -74,8 +74,8 @@ function Homepage() {
           </li>
           <li>
             <span className="font-medium text-black">About Us</span> –
-            <span className="text-red-500 ml-1">
-              This page is under maintenance
+            <span className="text-black">
+              Available
             </span>
           </li>
         </ul>
