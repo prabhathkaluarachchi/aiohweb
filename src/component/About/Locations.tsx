@@ -109,7 +109,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         />
         <img src={nextImage} alt="Next" className="w-1/2 h-full object-cover" />
       </motion.div>
-      <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#078BD670] to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent z-10" />
     </div>
   );
 };
@@ -153,11 +153,10 @@ const Locations: React.FC = () => {
             <p className="mt-2 md:text-[16px] text-[14px] leading-relaxed">
               {locationCards[0].description}
             </p>
-            <div className="mt-4 flex justify-between text-[12px] italic font-light">
+            <div className="mt-4 flex justify-between text-[12px] font-light">
               <span className="text-left">{locationCards[0].address}</span>
-              <span className="text-right bg-black/30 font-bold p-1 rounded">
-                {locationCards[0].phone}
-              </span>
+              <span className="font-bold">{locationCards[0].phone}</span>
+
             </div>
           </div>
         </div>
@@ -168,37 +167,34 @@ const Locations: React.FC = () => {
           <div className="h-[264px] relative shadow-md rounded-[20px] overflow-hidden">
             <ImageSlider images={locationCards[1].images} startDelay={1800} />
             <div className="absolute inset-0 flex flex-col justify-end p-4 text-white z-20 text-center">
-              <h3 className="text-[36px] font-bold mb-4">
+              <h3 className="text-[36px] font-bold mb-0">
                 {locationCards[1].title}
               </h3>
               <div className="flex justify-between mt-2 text-[12px] md:px-6 px-2 items-start gap-2">
-                <div className="w-1/2 md:text-center text-left">
+                <div className="w-1/2 md:text-left text-left">
                   <p className="font-semibold text-[14px] mb-2">
                     {locationCards[1].subLocations?.[0]?.label}
                   </p>
-                  <p className="italic">
+                  <p>
                     {locationCards[1].subLocations?.[0]?.address}
                   </p>
-                  <p className="italic font-bold">
-                    <span className="inline-block "></span>
-
-                    <span className="inline-block bg-black/30 px-2 py-1 rounded">
+                  <p className=" font-bold">
                       {locationCards[1].subLocations?.[0]?.phone}
-                    </span>
+
                   </p>
                 </div>
                 {/* <div className="w-px h-full bg-white opacity-100 mx-3" /> */}
-                <div className="w-1/2 md:text-center text-right">
+                <div className="w-1/2  text-right">
                   <p className="font-semibold text-[14px] mb-2">
                     {locationCards[1].subLocations?.[1]?.label}
                   </p>
-                  <p className="italic">
+                  <p>
                     {locationCards[1].subLocations?.[1]?.address}
                   </p>
-                  <p className="italic font-bold">
-                    <span className="inline-block bg-black/30 px-2 py-1 rounded">
+                  <p className="font-bold">
+
                       {locationCards[1].subLocations?.[1]?.phone}
-                    </span>
+
                   </p>
                 </div>
               </div>
@@ -212,13 +208,13 @@ const Locations: React.FC = () => {
               <h3 className="text-[36px] font-bold mb-3">
                 {locationCards[2].title}
               </h3>
-              <p className="mt-2 text-[12px] italic">
+              <p className="mt-2 text-[12px] ">
                 {locationCards[2].address}
               </p>
-              <p className="text-[12px] italic font-bold">
-                <span className="inline-block bg-black/30 px-2 py-1 rounded">
+              <p className="text-[12px] font-bold">
+
                   {locationCards[2].phone}
-                </span>
+
               </p>
             </div>
           </div>
