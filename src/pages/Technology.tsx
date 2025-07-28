@@ -16,7 +16,7 @@ const Merketing: React.FC = () => {
 
   return (
     <>
-      <div className="m-3.5 text-text">
+      <div className="m-3.5 text-text font-['Roboto']">
         {/* Header */}
         <header className="bg-[#01213A] mb-3.5 h-12 md:h-[67px] rounded-[20px] flex items-center justify-center">
           <img src={nav} className="w-full h-auto object-fill" />
