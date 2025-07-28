@@ -491,7 +491,7 @@ const WebRecentWork: React.FC = () => {
                   />
                   <div className="absolute flex items-center justify-center bottom-0 left-0 w-full p-2 md:p-4 bg-white/20 backdrop-blur-md rounded-b-[20px] z-0">
                     <button className="text-secondary flex items-center justify-center gap-1 w-fit px-6 py-2 bg-primary hover:bg-primary/80 rounded-full cursor-pointer">
-                      <span className="mb-1 text-sm md:text-base font-medium">
+                      <span className="text-sm md:text-base font-medium">
                         Explore
                       </span>
                       <GoArrowUpRight

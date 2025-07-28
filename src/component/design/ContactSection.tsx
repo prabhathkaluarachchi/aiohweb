@@ -504,7 +504,7 @@ const ContactSection: React.FC = () => {
           <button
             type="submit"
             disabled={isSending}
-            className={`w-full lg:w-fit my-4 lg:mt-6 px-6 py-3 rounded-full font-medium cursor-pointer ${
+            className={`w-full lg:w-fit mt-4 text-[18px] font-medium rounded-full py-[12px] px-6  transition cursor-pointer ${
               isSending
                 ? "bg-primary/60 text-[#19181899] cursor-not-allowed"
                 : "bg-primary text-[#191818] hover:bg-primary/80"
