@@ -299,7 +299,7 @@ const RecentWork: React.FC = () => {
   // Calculate pagination based on screen size
   let itemsPerPage = 8;
   if (screen === "mobile") itemsPerPage = 4;
-  else if (screen === "tablet") itemsPerPage = 9;
+  else if (screen === "tablet") itemsPerPage = 6;
 
   const totalPages = Math.ceil(projects.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -550,7 +550,7 @@ const RecentWork: React.FC = () => {
 
                 <div className="mt-6 text-secondary">
                   <button className="w-fit my-4 px-6 py-4 rounded-full font-medium bg-primary hover:bg-primary/80 flex items-center justify-center gap-2 transition cursor-pointer">
-                    <span className="leading-none mb-0.5">View Project</span>
+                    <span className="leading-none lg:mb-0.5">View Project</span>
                     <LuCircleChevronRight className="text-base leading-none" />
                   </button>
                 </div>
