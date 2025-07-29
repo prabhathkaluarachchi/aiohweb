@@ -4,10 +4,10 @@ import Process from "../component/Marketing/Process";
 import RecentWork from "../component/Marketing/RecentWork";
 import Contact from "../component/Marketing/ContactSection";
 
-import nav from "../assets/img/Navbar.png";
 import footer from "../assets/img/Footer.png";
 
 import { useEffect } from "react";
+import Header from "../component/common/Header";
 
 const Merketing: React.FC = () => {
   useEffect(() => {
@@ -18,9 +18,9 @@ const Merketing: React.FC = () => {
     <>
       <div className="m-3.5 text-text font-['Roboto']">
         {/* Header */}
-        <header className="bg-[#01213A] mb-3.5 h-12 md:h-[67px] rounded-[20px] flex items-center justify-center">
-          <img src={nav} className="w-full h-auto object-fill" />
-        </header>
+        <div className="mx-auto mb-3.5">
+          <Header currentPath="/Marketing" />
+        </div>
 
         {/* Hero*/}
         <section className="w-full lg:pt-14 rounded-[20px]">

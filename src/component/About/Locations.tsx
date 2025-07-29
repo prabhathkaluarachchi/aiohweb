@@ -7,6 +7,8 @@ import Image3 from "../../assets/about/locimage3.png";
 import Image4 from "../../assets/about/ausimage1.jpeg";
 import Image5 from "../../assets/about/ausimage2.jpeg";
 import Image6 from "../../assets/about/ausimage3.jpeg";
+import Image7 from "../../assets/about/loccol1.jpeg";
+import Image8 from "../../assets/about/loccol2.jpeg";
 
 // Types
 type SubLocation = {
@@ -37,7 +39,7 @@ const locationCards: LocationCard[] = [
     description:
       "Our state-of-the-art workspace in Australia offers modern amenities and flexible environments designed to foster creativity and business success.",
     address: "1 Redwood Dr Notting Hill VIC 3168 Australia",
-    phone: " 0434276273",
+    phone: "0434276273",
     images: [Image4, Image5, Image6],
     layout: "full",
   },
@@ -58,7 +60,8 @@ const locationCards: LocationCard[] = [
         phone: "0812121051",
       },
     ],
-    images: [Image2, Image3, Image1],
+    // 🔄 You can replace these with real Kandy/Colombo sets
+    images: [Image7, Image8, Image2, Image1, Image3], // General set for desktop
     layout: "split",
   },
   {
@@ -71,6 +74,10 @@ const locationCards: LocationCard[] = [
     layout: "full",
   },
 ];
+
+// ✅ New image arrays per sub-location
+const kandyImages = [Image2, Image3, Image1];
+const colomboImages = [Image7, Image8];
 
 // ✅ ImageSlider
 const ImageSlider: React.FC<ImageSliderProps> = ({
@@ -141,7 +148,7 @@ const Locations: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex flex-col lg:flex-row justify-between items-stretch gap-8"
+        className="flex flex-col lg:flex-row justify-between items-stretch gap-8 "
       >
         {/* Australia Card */}
         <div className="w-full lg:w-[50%] h-[560px] relative shadow-md rounded-[20px] overflow-hidden">
@@ -156,66 +163,92 @@ const Locations: React.FC = () => {
             <div className="mt-4 flex justify-between text-[12px] font-light">
               <span className="text-left">{locationCards[0].address}</span>
               <span className="font-bold">{locationCards[0].phone}</span>
-
             </div>
           </div>
         </div>
 
-        {/* Right Column: Sri Lanka + USA */}
-        <div className="w-full lg:w-[48%] flex flex-col gap-8">
-          {/* Sri Lanka */}
+        {/* Sri Lanka - Mobile & Tablet ONLY */}
+        <div className="flex flex-col gap-6 lg:hidden w-full">
+          {/* Kandy Card */}
+          <div className="h-[264px] relative shadow-md rounded-[20px] overflow-hidden mb-2">
+            <ImageSlider images={kandyImages} startDelay={500} />
+            <div className="absolute inset-0 flex flex-col justify-end p-4 text-white z-20 text-center">
+              <h3 className="text-[28px] font-bold mb-1">
+                {locationCards[1].title}
+              </h3>
+              <p className="text-[14px] font-medium mb-2">
+                {locationCards[1].subLocations?.[0]?.label}
+              </p>
+              <p className="text-[12px]">
+                {locationCards[1].subLocations?.[0]?.address}
+              </p>
+              <p className="text-[12px] font-bold mt-1">
+                {locationCards[1].subLocations?.[0]?.phone}
+              </p>
+            </div>
+          </div>
+
+          {/* Colombo Card */}
           <div className="h-[264px] relative shadow-md rounded-[20px] overflow-hidden">
+            <ImageSlider images={colomboImages} startDelay={1500} />
+            <div className="absolute inset-0 flex flex-col justify-end p-4 text-white z-20 text-center">
+              <h3 className="text-[28px] font-bold mb-1">
+                {locationCards[1].title}
+              </h3>
+              <p className="text-[14px] font-medium mb-2">
+                {locationCards[1].subLocations?.[1]?.label}
+              </p>
+              <p className="text-[12px]">
+                {locationCards[1].subLocations?.[1]?.address}
+              </p>
+              <p className="text-[12px] font-bold mt-1">
+                {locationCards[1].subLocations?.[1]?.phone}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Sri Lanka Desktop + USA */}
+        <div className="w-full lg:w-[48%] flex flex-col gap-8">
+          {/* Sri Lanka - Desktop Only */}
+          <div className="hidden lg:block h-[264px] relative shadow-md rounded-[20px] overflow-hidden">
             <ImageSlider images={locationCards[1].images} startDelay={1800} />
             <div className="absolute inset-0 flex flex-col justify-end p-4 text-white z-20 text-center">
               <h3 className="text-[36px] font-bold mb-0">
                 {locationCards[1].title}
               </h3>
               <div className="flex justify-between mt-2 text-[12px] md:px-6 px-2 items-start gap-2">
-                <div className="w-1/2 md:text-left text-left">
+                <div className="w-1/2 text-left">
                   <p className="font-semibold text-[14px] mb-2">
                     {locationCards[1].subLocations?.[0]?.label}
                   </p>
-                  <p>
-                    {locationCards[1].subLocations?.[0]?.address}
-                  </p>
-                  <p className=" font-bold">
-                      {locationCards[1].subLocations?.[0]?.phone}
-
+                  <p>{locationCards[1].subLocations?.[0]?.address}</p>
+                  <p className="font-bold">
+                    {locationCards[1].subLocations?.[0]?.phone}
                   </p>
                 </div>
-                {/* <div className="w-px h-full bg-white opacity-100 mx-3" /> */}
-                <div className="w-1/2  text-right">
+                <div className="w-1/2 text-right">
                   <p className="font-semibold text-[14px] mb-2">
                     {locationCards[1].subLocations?.[1]?.label}
                   </p>
-                  <p>
-                    {locationCards[1].subLocations?.[1]?.address}
-                  </p>
+                  <p>{locationCards[1].subLocations?.[1]?.address}</p>
                   <p className="font-bold">
-
-                      {locationCards[1].subLocations?.[1]?.phone}
-
+                    {locationCards[1].subLocations?.[1]?.phone}
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* USA */}
+          {/* USA Card */}
           <div className="h-[264px] relative shadow-md rounded-[20px] overflow-hidden">
             <ImageSlider images={locationCards[2].images} startDelay={3800} />
             <div className="absolute inset-0 flex flex-col justify-end p-4 text-white z-20 text-center">
-              <h3 className="text-[36px] font-bold mb-3">
+              <h3 className="text-[36px] font-bold mb-2">
                 {locationCards[2].title}
               </h3>
-              <p className="mt-2 text-[12px] ">
-                {locationCards[2].address}
-              </p>
-              <p className="text-[12px] font-bold">
-
-                  {locationCards[2].phone}
-
-              </p>
+              <p className="mt-2 text-[12px]">{locationCards[2].address}</p>
+              <p className="text-[12px] font-bold">{locationCards[2].phone}</p>
             </div>
           </div>
         </div>
