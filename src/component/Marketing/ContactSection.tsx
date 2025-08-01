@@ -555,7 +555,7 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full "
         >
           {/* Address Card */}
           <div className="bg-gradient-to-b from-[#01213A] from-0% to-[#035BA0] to-100% rounded-[20px] p-6">
@@ -596,18 +596,17 @@ const ContactSection: React.FC = () => {
           </div>
 
           {/* Card 4 - Social Icons */}
-          <div className="rounded-[20px] p-2 md:p-6 flex flex-col items-center md:items-start justify-center mb-1">
-            <p className="text-lg font-normal mb-2 text-center lg:text-left">
+          <div className="rounded-xl p-6 flex flex-col items-center md:items-start justify-center gap-4">
+            <p className="text-[18px] font-normal mb-1 text-center lg:text-left">
               Follow Us:
             </p>
-
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap  gap-4">
               {/* Facebook */}
               <a
                 href="https://www.facebook.com/allinoneholdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
                 <img
                   src={FacebookIcon}
@@ -621,7 +620,7 @@ const ContactSection: React.FC = () => {
                 href="https://www.instagram.com/all_in_one_holdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
                 <img
                   src={InstagramIcon}
@@ -635,7 +634,7 @@ const ContactSection: React.FC = () => {
                 href="https://g.co/kgs/Cw4rrUZ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
                 <img
                   src={GoogleIcon}
@@ -649,17 +648,16 @@ const ContactSection: React.FC = () => {
                 href="https://lk.linkedin.com/company/all-in-one-holdings"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
                 <img src={LinkIcon} alt="X" className="w-[18px] h-[18px]" />
               </a>
-
               {/* X com */}
               <a
                 href="https://x.com/allinoneholding"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary border-2 border-primary flex items-center justify-center hover:opacity-80"
+                className="w-10 h-10 rounded-full bg-[#02EC97] border-2 border-[#02EC97] flex items-center justify-center transition hover:opacity-80"
               >
                 <img src={XIcon} alt="X" className="w-[18px] h-[18px]" />
               </a>
