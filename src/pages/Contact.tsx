@@ -6,7 +6,11 @@ import ContactHero from "../component/contact/ContactHero";
 const Contact = () => {
   return (
     <div className="w-full font-['Roboto'] min-h-screen p-3.5">
-      <Header />
+                  {/* Header */}
+      <div className="mx-auto mb-3.5">
+        <Header currentPath="/contact" />
+      </div>
+
 
       {/* Section 1 */}
       <section className="bg-transparent">

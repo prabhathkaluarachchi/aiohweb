@@ -17,7 +17,10 @@ function WebService() {
 
   return (
     <div className="w-full font-['Roboto'] min-h-screen p-3.5 overflow-x-hidden">
-      <Header />
+      {/* Header */}
+      <div className="mx-auto">
+        <Header currentPath="/Aboutus" />
+      </div>
 
       <section className="rounded-[20px] lg:mb-30 mb-20">
         <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-0 lg:mt-14">
