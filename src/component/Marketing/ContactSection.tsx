@@ -555,42 +555,31 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full "
-        >
-          {/* Address Card */}
-          <div className="bg-gradient-to-b from-[#01213A] from-0% to-[#035BA0] to-100% rounded-[20px] p-6">
-            <p className="text-lg font-normal mb-1 text-white ">Address :</p>
-            <p className="text-base text-white leading-6 font-light">
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full md:mt-6 ">
+          {/* Card 1 - Address */}
+
+          <div className="rounded-[20px] p-6 shadow-sm text-white bg-[linear-gradient(180deg,_#01213A_0%,_#035BA0_100%)]">
+            <p className="text-[18px] font-normal mb-1">Address :</p>
+            <p className="text-[16px] text-white leading-[24px] font-light">
               3rd Floor, All in one Holdings, <br />
               349/2/1 Katugastota Rd, <br />
               Kandy, Sri Lanka.
             </p>
           </div>
 
-          <div className="flex flex-row sm:flex-col gap-2 sm:gap-0 px-4 py-6 sm:p-0">
-            {/* Phone - Card */}
-            <div className="flex-1 rounded-[20px] md:p-6 bg-white">
-              {/*shadow-sm lg:shadow-none*/}
-              <p className="text-lg font-normal text-start mb-1">Phone :</p>
-              <div className="flex flex-col text-sm md:text-base leading-6 font-light items-start">
-                <p>+94 81 2121 051</p>
-                {/* <p className="block sm:hidden text-lg font-serif">/</p> */}
-                <p>+94 76 8572 709</p>
-              </div>
-            </div>
-            {/* Email Card - mpbile */}
-            <div className="sm:hidden block flex-1 bg-white rounded-[20px] md:p-6">
-              <p className="text-lg font-normal mb-1">E-mail :</p>
-              <p className="text-sm md:text-base leading-6 font-light">
-                info@allinoneholdings.com
-              </p>
-            </div>
+          {/* Card 2 - Phone - Gradient */}
+          <div className="bg-transparent rounded-xl p-6">
+            <p className="text-[18px] font-normal mb-1">Phone :</p>
+            <p className="text-[16px] text-[#191818]leading-[32px] font-light">
+              +94 81 2121 051 <br />
+              +94 77 6722 709
+            </p>
           </div>
 
-          {/* Email Card - tab & desktop*/}
-          <div className="hidden sm:block flex-1 bg-white rounded-[20px] p-2 md:p-6 text-center md:text-start">
-            <p className="text-lg font-normal mb-1">E-mail :</p>
-            <p className="text-base  leading-6 font-light">
+          {/* Card 3 - Email */}
+          <div className="bg-transparent rounded-xl p-6 ">
+            <p className="text-[18px] font-normal mb-1">E-mail :</p>
+            <p className="text-[16px] text-[#191818] leading-[24px] font-light">
               info@allinoneholdings.com
             </p>
           </div>
