@@ -22,7 +22,7 @@ function Homepage() {
         </div>
 
         {/* Boxes */}
-        <div className="mt-10 px-4 py-10 sm:p-10 bg-red-600">
+        <div className="mt-10 px-4 py-10 sm:p-10 bg-blue-600">
           <h2 className="text-xl font-semibold text-white mb-2">
             Under Maintenance
           </h2>
