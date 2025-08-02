@@ -384,7 +384,7 @@ const ContactForm: React.FC = () => {
           <MotionSection
             delay={0.7}
             direction="right"
-            className="bg-white rounded-xl p-6 shadow-sm"
+            className="bg-white rounded-[20px] p-6 shadow-sm"
           >
             <p className="text-[18px] font-normal mb-1">Address :</p>
             <p className="text-[16px] text-[#191818] leading-[24px] font-light">
@@ -398,7 +398,7 @@ const ContactForm: React.FC = () => {
           <MotionSection
             delay={0.7}
             direction="right"
-            className="rounded-xl p-6 shadow-sm text-white  bg-[linear-gradient(180deg,_#01213A_0%,_#035BA0_100%)]"
+            className="rounded-[20px] p-6 shadow-sm text-white  bg-[linear-gradient(180deg,_#01213A_0%,_#035BA0_100%)]"
           >
             <p className="text-[18px] font-normal mb-1">Phone :</p>
             <p className="text-[16px] text-white leading-[32px] font-light">
@@ -411,7 +411,7 @@ const ContactForm: React.FC = () => {
           <MotionSection
             delay={0.7}
             direction="right"
-            className="bg-white rounded-xl p-6 shadow-sm"
+            className="bg-white rounded-[20px] p-6 shadow-sm"
           >
             <p className="text-[18px] font-normal mb-1">E-mail :</p>
             <p className="text-[16px] text-[#191818] leading-[24px] font-light">
